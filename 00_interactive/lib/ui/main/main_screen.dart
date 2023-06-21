@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:interactive/data/post.dart';
+import 'package:interactive/data/post_repository.dart';
 import 'package:interactive/ui/components/post_widget.dart';
 
 class MainScreen extends StatefulWidget {
@@ -9,7 +11,17 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  List<Widget> items = List.generate(100, (index) => Text('$index'));
+  List<Post> posts = PostRepository().getPosts();
+  int favoriteCount = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    setState(() {
+      favoriteCount = posts.where((post) => post.isFavorite).length;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +30,25 @@ class _MainScreenState extends State<MainScreen> {
         title: const Text('Interactive 예제'),
       ),
       body: ListView(
-        children: [
-          PostWidget(),
-          PostWidget(),
-        ],
+        children: posts.map((post) {
+          return PostWidget(
+            post: post,
+            favoriteCount: favoriteCount,
+            onFavoritePressed: (post) {
+              setState(() {
+                posts = posts.map((e) {
+                  if (e.id == post.id) {
+                    e.isFavorite = !e.isFavorite;
+                    return e;
+                  }
+                  return e;
+                }).toList();
+
+                favoriteCount = posts.where((post) => post.isFavorite).length;
+              });
+            },
+          );
+        }).toList(),
       ),
     );
   }
