@@ -20,7 +20,6 @@ class _FutureScreenState extends State<FutureScreen> {
         ),
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               FutureBuilder<Post>(
                   future: api.getPost(1),
@@ -57,6 +56,25 @@ class _FutureScreenState extends State<FutureScreen> {
                   setState(() {});
                 },
                 child: const Text('Future 실행'),
+              ),
+              FutureBuilder<List<Post>>(
+                future: api.getPosts(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  }
+
+                  final posts = snapshot.data!;
+
+                  return Expanded(
+                    child: ListView.builder(
+                      itemCount: 100,
+                      itemBuilder: (context, index) {
+                        return Text(posts[index].title);
+                      },
+                    ),
+                  );
+                }
               ),
             ],
           ),

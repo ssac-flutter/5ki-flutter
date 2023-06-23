@@ -13,6 +13,8 @@ class PostApi {
   }
 
   Future<List<Post>> getPosts() async {
+    await Future.delayed(const Duration(seconds: 3));
+
     final response = await http
         .get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
 
