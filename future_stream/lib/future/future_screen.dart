@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:future_stream/future/data/model/post.dart';
+import 'package:future_stream/future/data/post_api.dart';
 
 class FutureScreen extends StatefulWidget {
   const FutureScreen({super.key});
@@ -8,6 +10,8 @@ class FutureScreen extends StatefulWidget {
 }
 
 class _FutureScreenState extends State<FutureScreen> {
+  final api = PostApi();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +22,8 @@ class _FutureScreenState extends State<FutureScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FutureBuilder<String>(
-                  future: getString(),
+              FutureBuilder<Post>(
+                  future: api.getPost(1),
                   builder: (context, snapshot) {
                     if (snapshot.hasError) {
                       return const Text('Error 발생!!!!');
@@ -42,10 +46,10 @@ class _FutureScreenState extends State<FutureScreen> {
                     }
 
                     // 로딩 끝
-                    String text = snapshot.data!;
+                    Post post = snapshot.data!;
                     return Text(
-                      text,
-                      style: Theme.of(context).textTheme.displayLarge,
+                      post.toJson().toString(),
+                      style: Theme.of(context).textTheme.bodyLarge,
                     );
                   }),
               ElevatedButton(
