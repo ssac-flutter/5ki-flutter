@@ -8,9 +8,6 @@ class FutureScreen extends StatefulWidget {
 }
 
 class _FutureScreenState extends State<FutureScreen> {
-  String text = '여기에 표시!!!';
-  bool isLoading = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,25 +18,38 @@ class _FutureScreenState extends State<FutureScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              if (isLoading)
-                Text(
-                  '로딩 중',
-                  style: Theme.of(context).textTheme.displayLarge,
-                ),
-              if (!isLoading)
-                Text(
-                  text,
-                  style: Theme.of(context).textTheme.displayLarge,
-                ),
-              ElevatedButton(
-                onPressed: () async {
-                  isLoading = true;
-                  // 화면 갱신
-                  setState(() {});
+              FutureBuilder<String>(
+                  future: getString(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return const Text('Error 발생!!!!');
+                    }
 
-                  text = await getString();
-                  isLoading = false;
-                  // 화면 갱신
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      // 로딩
+                      return Text(
+                        '로딩 중',
+                        style: Theme.of(context).textTheme.displayLarge,
+                      );
+                    }
+
+                    if (snapshot.hasData == false) {
+                      // 로딩
+                      return Text(
+                        '데이터 없음',
+                        style: Theme.of(context).textTheme.displayLarge,
+                      );
+                    }
+
+                    // 로딩 끝
+                    String text = snapshot.data!;
+                    return Text(
+                      text,
+                      style: Theme.of(context).textTheme.displayLarge,
+                    );
+                  }),
+              ElevatedButton(
+                onPressed: () {
                   setState(() {});
                 },
                 child: const Text('Future 실행'),
