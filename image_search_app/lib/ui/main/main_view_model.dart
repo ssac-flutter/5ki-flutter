@@ -7,17 +7,20 @@ class MainViewModel with ChangeNotifier {
 
   MainViewModel(this._repository);
 
-  final MainState _state = MainState();
+  MainState _state = MainState(photos: [], isLoading: false);
 
   MainState get state => _state;
 
   void fetchImages(String query) async {
-    _state.isLoading = true;
+    _state = state.copyWith(isLoading: true);
     notifyListeners();
 
-    _state.photos = await _repository.getPhotos(query);
+    final photos = await _repository.getPhotos(query);
 
-    _state.isLoading = false;
+    _state = state.copyWith(
+      isLoading: false,
+      photos: photos,
+    );
     notifyListeners();
   }
 }
