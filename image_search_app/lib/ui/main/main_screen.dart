@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_search_app/ui/main/main_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -60,19 +61,15 @@ class _MainScreenState extends State<MainScreen> {
               ),
               itemCount: imageViewModel.photos.length,
               itemBuilder: (context, index) {
-                final image = imageViewModel.photos[index];
+                final photo = imageViewModel.photos[index];
                 return Padding(
                   padding: const EdgeInsets.all(6.0),
                   child: InkWell(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => DetailScreen(image: image)),
-                      // );
+                      context.push('/main/detail', extra: photo);
                     },
                     child: Hero(
-                      tag: image.id,
+                      tag: photo.id,
                       child: Card(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.0),
@@ -81,7 +78,7 @@ class _MainScreenState extends State<MainScreen> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(16.0),
                           child: Image.network(
-                            image.url,
+                            photo.url,
                             fit: BoxFit.cover,
                           ),
                         ),
