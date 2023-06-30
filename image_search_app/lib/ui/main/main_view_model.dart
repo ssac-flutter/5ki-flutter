@@ -7,7 +7,7 @@ class MainViewModel with ChangeNotifier {
 
   MainViewModel(this._repository);
 
-  MainState _state = MainState(photos: [], isLoading: false);
+  MainState _state = const MainState();
 
   MainState get state => _state;
 
