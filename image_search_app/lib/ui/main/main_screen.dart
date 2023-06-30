@@ -21,7 +21,9 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final imageViewModel = context.watch<MainViewModel>();
+    final viewModel = context.watch<MainViewModel>();
+    final state = viewModel.state;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('이미지 검색 앱'),
@@ -45,7 +47,7 @@ class _MainScreenState extends State<MainScreen> {
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.search),
                   onPressed: () {
-                    imageViewModel.fetchImages(controller.text);
+                    viewModel.fetchImages(controller.text);
                   },
                 ),
                 suffixIconColor: Colors.blue,
@@ -59,9 +61,9 @@ class _MainScreenState extends State<MainScreen> {
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
               ),
-              itemCount: imageViewModel.photos.length,
+              itemCount: state.photos.length,
               itemBuilder: (context, index) {
-                final photo = imageViewModel.photos[index];
+                final photo = state.photos[index];
                 return Padding(
                   padding: const EdgeInsets.all(6.0),
                   child: InkWell(
