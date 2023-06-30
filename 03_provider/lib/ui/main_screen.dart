@@ -3,8 +3,22 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_exam/ui/main_view_model.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    Future.microtask(() {
+      context.read<MainViewModel>().init();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +38,7 @@ class MainScreen extends StatelessWidget {
         children: [
           FloatingActionButton(
             onPressed: () {
-              viewModel.increment();
+              context.read<MainViewModel>().increment();
             },
             child: const Text('+'),
           ),
@@ -38,4 +52,23 @@ class MainScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+sealed class Action {
+  factory Action.login() = Login;
+  factory Action.logout() = Logout;
+}
+
+class Login implements Action {
+
+}
+
+class Logout implements Action {
+
+}
+
+class GetUserInfo implements Action {
+  final String name;
+
+  GetUserInfo(this.name);
 }

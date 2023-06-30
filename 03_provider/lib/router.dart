@@ -9,17 +9,11 @@ final router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => ChangeNotifierProvider(
-        create: (context) => MainViewModel(),
-        child: const MainScreen(),
-      ),
+      builder: (context, state) => const MainScreen(),
     ),
     GoRoute(
       path: '/second',
-      builder: (context, state) => ChangeNotifierProvider(
-        create: (context) => MainViewModel(),
-        child: const SecondScreen(),
-      ),
+      builder: (context, state) => const SecondScreen(),
     ),
   ],
 );
