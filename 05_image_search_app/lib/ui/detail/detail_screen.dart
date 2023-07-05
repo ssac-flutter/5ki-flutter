@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:image_search_app/domain/model/photo.dart';
+import 'package:image_search_app/data/model/photo.dart';
 
 class DetailScreen extends StatelessWidget {
   final Photo photo;
@@ -13,7 +13,7 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('상세 이미지 : ${photo.views}'),
+        title: const Text('상세 이미지'),
         centerTitle: true,
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
