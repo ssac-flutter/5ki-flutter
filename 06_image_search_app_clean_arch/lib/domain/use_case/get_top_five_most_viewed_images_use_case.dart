@@ -6,7 +6,7 @@ class GetTopFiveMostViewedImagesUseCase {
 
   GetTopFiveMostViewedImagesUseCase(this._repository);
 
-  Future<List<Photo>> call(String query) async {
+  Future<List<Photo>> execute(String query) async {
     final photos = await _repository.getPhotos(query);
 
     // 조건에 맞는
