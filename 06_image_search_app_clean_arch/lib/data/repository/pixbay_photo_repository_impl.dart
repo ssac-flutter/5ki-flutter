@@ -8,17 +8,13 @@ class PixabayPhotoRepositoryImpl implements PhotoRepository {
   final _api = PixabayApi();
 
   @override
-  Future<Result<List<Photo>>> getPhotos(String query) async {
-    try {
-      final resultDto = await _api.getImages(query);
+  Future<List<Photo>> getPhotos(String query) async {
+    final resultDto = await _api.getImages(query);
 
-      if (resultDto.hits == null) {
-        return const Result.error('데이터가 없습니다');
-      }
-
-      return Result.success(resultDto.hits!.map((e) => e.toPhoto()).toList());
-    } catch (e) {
-      return const Result.error('네트워크 에러');
+    if (resultDto.hits == null) {
+      return [];
     }
+
+    return resultDto.hits!.map((e) => e.toPhoto()).toList();
   }
 }
