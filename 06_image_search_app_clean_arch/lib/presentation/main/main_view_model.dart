@@ -5,6 +5,8 @@ import 'package:image_search_app/domain/use_case/get_top_five_most_viewed_images
 import 'package:image_search_app/presentation/main/main_state.dart';
 import 'package:image_search_app/presentation/main/main_ui_event.dart';
 
+import '../../core/result.dart';
+
 class MainViewModel with ChangeNotifier {
   final GetTopFiveMostViewedImagesUseCase _getTopFiveMostViewedImagesUseCase;
 
@@ -27,10 +29,19 @@ class MainViewModel with ChangeNotifier {
     _state = state.copyWith(isLoading: true);
     notifyListeners();
 
-    _state = state.copyWith(
-      isLoading: false,
-      photos: await _getTopFiveMostViewedImagesUseCase.execute(query),
-    );
-    notifyListeners();
+    final result = await _getTopFiveMostViewedImagesUseCase.execute(query);
+
+    switch (result) {
+      case Success(:final data):
+        _state = state.copyWith(
+          isLoading: false,
+          photos: data,
+        );
+        notifyListeners();
+
+        _eventController.add(const EndLoading());
+      case Error(:final e):
+        _eventController.add(ShowSnackBar(e));
+    }
   }
 }
