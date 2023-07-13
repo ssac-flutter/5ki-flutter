@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:websocket_sample/data/data_source/binance_api.dart';
+import 'package:websocket_sample/data/repository/price_repository_impl.dart';
+import 'package:websocket_sample/domain/repository/price_repository.dart';
 import 'package:websocket_sample/presentation/main_screen.dart';
+import 'package:websocket_sample/presentation/main_view_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +22,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MainScreen(),
+      home: ChangeNotifierProvider(
+        create: (_) => MainViewModel(PriceRepositoryImpl()),
+        child: const MainScreen(),
+      ),
     );
   }
 }
