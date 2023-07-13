@@ -4,41 +4,30 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a4212f5-54a4-4ea3-8213-ba628ed9c9df" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/ic_launcher-playstore.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../06_image_search_app_clean_arch/lib/data/api/pixabay_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../06_image_search_app_clean_arch/lib/data/api/pixabay_api.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../image_search_app/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../image_search_app/image_search_app.iml" beforeDir="false" />
-    </list>
+    <list default="true" id="9f970da1-0dc6-41fb-b567-602534d76105" name="Changes" comment="[websocket] 완성" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2SV4bevry69bmkTZiMnDLrxY1Ek" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="2SV4woFNXKf6auzoWxIDnBYOYcv" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" />
     <panes>
@@ -48,7 +37,6 @@
     </panes>
   </component>
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
@@ -56,18 +44,81 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
+    "io.flutter.reload.alreadyRun": "true",
+    "settings.editor.selected.configurable": "preferences.fileTypes",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
+  <component name="RunManager" selected="Flutter.main.dart">
+    <configuration name="실제 데이터 잘 들어오나 확인" type="FlutterTestConfigType" factoryName="Flutter Test" temporary="true" nameIsGenerated="true">
+      <option name="testName" value="실제 데이터 잘 들어오나 확인" />
+      <option name="testFile" value="$PROJECT_DIR$/test/data/data_source/binance_api_test.dart" />
+      <option name="useRegexp" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tests in binance_api_test.dart" type="FlutterTestConfigType" factoryName="Flutter Test" temporary="true" nameIsGenerated="true">
+      <option name="testFile" value="$PROJECT_DIR$/test/data/data_source/binance_api_test.dart" />
+      <option name="useRegexp" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tests in main_view_model_test.dart" type="FlutterTestConfigType" factoryName="Flutter Test" temporary="true" nameIsGenerated="true">
+      <option name="testFile" value="$PROJECT_DIR$/test/presentation/main_view_model_test.dart" />
+      <option name="useRegexp" value="false" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Flutter Test.tests in binance_api_test.dart" />
+        <item itemvalue="Flutter Test.실제 데이터 잘 들어오나 확인" />
+        <item itemvalue="Flutter Test.tests in main_view_model_test.dart" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9a4212f5-54a4-4ea3-8213-ba628ed9c9df" name="Changes" comment="" />
-      <created>1689218486230</created>
+      <changelist id="9f970da1-0dc6-41fb-b567-602534d76105" name="Changes" comment="" />
+      <created>1689218655268</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1689218486230</updated>
+      <updated>1689218655268</updated>
     </task>
+    <task id="LOCAL-00001" summary="[websocket] first commit">
+      <created>1689218725767</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1689218725767</updated>
+    </task>
+    <task id="LOCAL-00002" summary="[websocket] test code 작성">
+      <created>1689220776282</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1689220776282</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[websocket] 완성">
+      <created>1689227300471</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1689227300471</updated>
+    </task>
+    <task id="LOCAL-00004" summary="[websocket] 완성">
+      <created>1689227721977</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1689227721977</updated>
+    </task>
+    <task id="LOCAL-00005" summary="[websocket] 완성">
+      <created>1689227732073</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1689227732073</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -86,5 +137,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="[websocket] first commit" />
+    <MESSAGE value="[websocket] test code 작성" />
+    <MESSAGE value="[websocket] 완성" />
+    <option name="LAST_COMMIT_MESSAGE" value="[websocket] 완성" />
   </component>
 </project>
