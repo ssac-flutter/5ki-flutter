@@ -4,7 +4,7 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:websocket_sample/domain/model/price.dart';
 
 class BinanceApi {
-  final _wsUrl = Uri.parse('wss://fstream.binance.com/ws/bnbusdt@aggTrade');
+  final _wsUrl = Uri.parse('ws://10.0.2.2/ws');
  
   Stream<Price> getPriceStream() {
     final channel = WebSocketChannel.connect(_wsUrl);
