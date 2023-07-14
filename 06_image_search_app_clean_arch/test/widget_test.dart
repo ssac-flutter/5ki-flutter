@@ -9,22 +9,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:image_search_app/main.dart';
+import 'package:network_image_mock/network_image_mock.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    mockNetworkImagesFor(() async {
+      await tester.pumpWidget(const MyApp());
+      // Build our app and trigger a frame.
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+      final textInput = find.byType(TextField);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+      await tester.enterText(textInput, 'banana');
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+      await tester.tap(find.byIcon(Icons.search));
+
+      await tester.pumpAndSettle(const Duration(seconds: 5));
+
+      final imageFinder = find.byType(Image);
+
+      expect(imageFinder, findsAtLeastNWidgets(2));
+    });
   });
 }
