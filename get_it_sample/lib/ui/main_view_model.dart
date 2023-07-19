@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:get_it_sample/data/counter.dart';
+import 'package:get_it_sample/data/counter_repository.dart';
 
 class MainViewModel with ChangeNotifier {
-  final Counter counter;
+  final CounterRepository counterRepository;
 
-  MainViewModel(this.counter);
+  MainViewModel(this.counterRepository);
 
-  int get count => counter.count;
+  int get count => counterRepository.getCounter().count;
 
   void increment() {
-    counter.count++;
+    counterRepository.getCounter().count++;
     notifyListeners();
   }
 }

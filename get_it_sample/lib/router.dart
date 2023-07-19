@@ -1,4 +1,6 @@
 import 'package:get_it_sample/data/counter.dart';
+import 'package:get_it_sample/data/counter_repository.dart';
+import 'package:get_it_sample/data/counter_repository_impl.dart';
 import 'package:get_it_sample/di/di_setup.dart';
 import 'package:get_it_sample/ui/main_view_model.dart';
 import 'package:get_it_sample/ui/second_view_model.dart';
@@ -15,7 +17,7 @@ final router = GoRouter(
       path: '/',
       builder: (context, state) {
         return ChangeNotifierProvider(
-          create: (_) => MainViewModel(getIt<Counter>()),
+          create: (_) => MainViewModel(getIt<CounterRepository>()),
           child: MainScreen(),
         );
       },
@@ -24,7 +26,7 @@ final router = GoRouter(
       path: '/second',
       builder: (context, state) {
         return ChangeNotifierProvider(
-          create: (_) => MainViewModel(getIt<Counter>()),
+          create: (_) => MainViewModel(getIt<CounterRepository>()),
           child: SecondScreen(),
         );
       },
