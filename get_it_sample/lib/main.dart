@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get_it_sample/data/counter.dart';
 import 'package:get_it_sample/di/di_setup.dart';
 import 'package:provider/provider.dart';
 
 import 'router.dart';
 import 'ui/main_view_model.dart';
 
-void main() {
-  setup();
+void main() async {
+  await setup();
 
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => MainViewModel()),
-      ],
-      child: const MyApp(),
-    ),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

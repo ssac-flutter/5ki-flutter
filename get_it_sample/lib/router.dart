@@ -1,3 +1,7 @@
+import 'package:get_it_sample/data/counter.dart';
+import 'package:get_it_sample/di/di_setup.dart';
+import 'package:get_it_sample/ui/main_view_model.dart';
+import 'package:get_it_sample/ui/second_view_model.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -9,11 +13,21 @@ final router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const MainScreen(),
+      builder: (context, state) {
+        return ChangeNotifierProvider(
+          create: (_) => MainViewModel(getIt<Counter>()),
+          child: MainScreen(),
+        );
+      },
     ),
     GoRoute(
       path: '/second',
-      builder: (context, state) => const SecondScreen(),
+      builder: (context, state) {
+        return ChangeNotifierProvider(
+          create: (_) => MainViewModel(getIt<Counter>()),
+          child: SecondScreen(),
+        );
+      },
     ),
   ],
 );
