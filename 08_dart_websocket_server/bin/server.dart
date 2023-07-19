@@ -1,8 +1,7 @@
-import 'dart:convert';
 import 'dart:io';
 
 void main(List<String> args) async {
-  var server = await HttpServer.bind(InternetAddress.loopbackIPv4, 4040);
+  var server = await HttpServer.bind('0.0.0.0', 4040);
   print('Listening on localhost:${server.port}');
 
   List<WebSocket> rooms = [];
