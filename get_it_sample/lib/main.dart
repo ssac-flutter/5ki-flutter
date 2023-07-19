@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get_it_sample/di/di_setup.dart';
 import 'package:provider/provider.dart';
 
 import 'router.dart';
 import 'ui/main_view_model.dart';
 
 void main() {
+  setup();
+
   runApp(
     MultiProvider(
       providers: [
