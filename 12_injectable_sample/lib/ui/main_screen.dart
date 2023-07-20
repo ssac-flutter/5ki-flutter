@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it_sample/di/di_setup.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +23,7 @@ class _MainScreenState extends State<MainScreen> {
     final viewModel = context.watch<MainViewModel>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('첫 화면'),
+        title: Text(getIt<String>()),
       ),
       body: Center(
         child: Text(

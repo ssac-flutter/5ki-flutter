@@ -5,8 +5,11 @@ import 'di_setup.config.dart';
 
 final getIt = GetIt.instance;
 
+const dev = Environment('dev');
+const prod = Environment('prod');
+
 @InjectableInit()
-void configureDependencies() => getIt.init();
+void configureDependencies() => getIt.init(environment: Environment.prod);
 
 
 
