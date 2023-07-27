@@ -5,9 +5,10 @@ import 'package:image_search_app/data/dto/pixabay_result_dto.dart';
 import 'package:image_search_app/data/mapper/photo_mapper.dart';
 import 'package:image_search_app/domain/model/photo.dart';
 import 'package:image_search_app/domain/repository/photo_repository.dart';
+import 'package:http/http.dart' as http;
 
 class PixabayPhotoRepositoryImpl implements PhotoRepository {
-  final _api = PixabayApi();
+  final _api = PixabayApi(http.Client());
 
   @override
   Future<List<Photo>> getPhotos(String query) async {

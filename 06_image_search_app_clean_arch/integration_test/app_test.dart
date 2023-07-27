@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:image_search_app/main.dart' as app;
+import 'package:image_search_app/main.dart';
 import 'package:integration_test/integration_test.dart';
+import 'package:network_image_mock/network_image_mock.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   group('end - to - end test', () {
-    testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-      app.main();
+    testWidgets('banana를 검색하면 2개 이상 검색되어야 한다', (WidgetTester tester) async {
+      await mockNetworkImagesFor(() async {
+        await tester.pumpWidget(const MyApp());
 
-      await tester.pump();
-      // Build our app and trigger a frame.
+        final textInput = find.byType(TextField);
 
-      final textInput = find.byType(TextField);
+        await tester.enterText(textInput, 'banana');
 
-      await tester.enterText(textInput, 'banana');
+        await tester.tap(find.byIcon(Icons.search));
 
-      await tester.tap(find.byIcon(Icons.search));
+        await tester.pumpAndSettle(const Duration(seconds: 5));
 
-      await tester.pumpAndSettle(const Duration(seconds: 5));
+        final imageFinder = find.byType(Image);
 
-      final imageFinder = find.byType(Image);
-
-      expect(imageFinder, findsAtLeastNWidgets(2));
+        expect(imageFinder, findsAtLeastNWidgets(2));
+      });
     });
   });
 }

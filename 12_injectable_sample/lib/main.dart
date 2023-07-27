@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it_sample/data/counter.dart';
 import 'package:get_it_sample/di/di_setup.dart';
+import 'package:get_it_sample/ui/color_schemes.g.dart';
 import 'package:provider/provider.dart';
 
 import 'router.dart';
@@ -21,10 +22,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: router,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
     );
   }
 }
