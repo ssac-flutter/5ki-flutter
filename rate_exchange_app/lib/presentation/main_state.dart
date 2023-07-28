@@ -13,8 +13,8 @@ class MainState with _$MainState {
     @Default(false) bool isLoading,
     @Default(0) num baseMoney,
     @Default(0) num targetMoney,
-    @Default('KRW') String baseCode,
-    @Default('USD') String targetCode,
+    @Default('USD') String baseCode,
+    @Default('KRW') String targetCode,
     DateTime? lastUpdateTime,
   }) = _MainState;
 

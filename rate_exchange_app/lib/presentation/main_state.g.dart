@@ -14,8 +14,8 @@ _$_MainState _$$_MainStateFromJson(Map<String, dynamic> json) => _$_MainState(
       isLoading: json['isLoading'] as bool? ?? false,
       baseMoney: json['baseMoney'] as num? ?? 0,
       targetMoney: json['targetMoney'] as num? ?? 0,
-      baseCode: json['baseCode'] as String? ?? 'KRW',
-      targetCode: json['targetCode'] as String? ?? 'USD',
+      baseCode: json['baseCode'] as String? ?? 'USD',
+      targetCode: json['targetCode'] as String? ?? 'KRW',
       lastUpdateTime: json['lastUpdateTime'] == null
           ? null
           : DateTime.parse(json['lastUpdateTime'] as String),

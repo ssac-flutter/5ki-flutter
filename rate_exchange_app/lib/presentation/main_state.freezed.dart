@@ -180,8 +180,8 @@ class _$_MainState with DiagnosticableTreeMixin implements _MainState {
       this.isLoading = false,
       this.baseMoney = 0,
       this.targetMoney = 0,
-      this.baseCode = 'KRW',
-      this.targetCode = 'USD',
+      this.baseCode = 'USD',
+      this.targetCode = 'KRW',
       this.lastUpdateTime})
       : _rates = rates;
 

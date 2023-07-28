@@ -15,6 +15,21 @@ class _MainScreenState extends State<MainScreen> {
   final _targetMoneyController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+
+    Future.microtask(() {
+      context.read<MainViewModel>().eventStream.listen((event) {
+        _baseMoneyController.text = event.baseMoney.toString();
+        _targetMoneyController.text = event.targetMoney.toString();
+
+        _baseMoneyController.selection = TextSelection.fromPosition(TextPosition(offset: _baseMoneyController.text.length));
+        _targetMoneyController.selection = TextSelection.fromPosition(TextPosition(offset: _targetMoneyController.text.length));
+      });
+    });
+  }
+
+  @override
   void dispose() {
     _baseMoneyController.dispose();
     _targetMoneyController.dispose();
@@ -25,9 +40,6 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     final viewModel = context.watch<MainViewModel>();
     final state = viewModel.state;
-
-    _baseMoneyController.text = state.baseMoney.toString();
-    _targetMoneyController.text = state.targetMoney.toString();
 
     return Scaffold(
       body: SafeArea(
@@ -93,7 +105,7 @@ class _MainScreenState extends State<MainScreen> {
                               keyboardType: TextInputType.number,
                               onChanged: (value) {
                                 viewModel.onEvent(
-                                    MainEvent.inputBaseMoney(num.parse(value)));
+                                    MainEvent.inputBaseMoney(num.tryParse(value) ?? 0));
                               },
                             )),
                             Expanded(
@@ -127,7 +139,7 @@ class _MainScreenState extends State<MainScreen> {
                               keyboardType: TextInputType.number,
                               onChanged: (value) {
                                 viewModel.onEvent(
-                                    MainEvent.inputTargetMoney(num.parse(value)));
+                                    MainEvent.inputTargetMoney(num.tryParse(value) ?? 0));
                               },
                             )),
                             Expanded(
