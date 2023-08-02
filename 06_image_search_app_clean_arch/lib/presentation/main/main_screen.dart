@@ -73,38 +73,48 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ),
           Expanded(
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-              ),
-              itemCount: state.photos.length,
-              itemBuilder: (context, index) {
-                final photo = state.photos[index];
-                return Padding(
-                  padding: const EdgeInsets.all(6.0),
-                  child: InkWell(
-                    onTap: () {
-                      context.push('/main/detail', extra: photo);
-                    },
-                    child: Hero(
-                      tag: photo.id,
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16.0),
-                        ),
-                        elevation: 4.0,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(16.0),
-                          child: Image.network(
-                            photo.url,
-                            fit: BoxFit.cover,
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final columnCount = switch (constraints.maxWidth) {
+                  > 1150 => 4,
+                  > 655 => 3,
+                  _ => 2,
+                };
+
+                return GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: columnCount,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                  ),
+                  itemCount: state.photos.length,
+                  itemBuilder: (context, index) {
+                    final photo = state.photos[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: InkWell(
+                        onTap: () {
+                          context.push('/main/detail', extra: photo);
+                        },
+                        child: Hero(
+                          tag: photo.id,
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
+                            elevation: 4.0,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(16.0),
+                              child: Image.network(
+                                photo.url,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ),
+                    );
+                  },
                 );
               },
             ),

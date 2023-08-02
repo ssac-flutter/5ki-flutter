@@ -17,8 +17,8 @@ final router = GoRouter(
         return ChangeNotifierProvider(
           create: (_) => MainViewModel(
             GetTopFiveMostViewedImagesUseCase(
-              // PixabayPhotoRepositoryImpl(),
-              MockPhotoRepositoryImpl(),
+              PixabayPhotoRepositoryImpl(),
+              // MockPhotoRepositoryImpl(),
             ),
           ),
           child: const MainScreen(),
