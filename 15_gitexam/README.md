@@ -4,5 +4,3 @@
   - pull 할 때는 rebase가 예쁘다
 - pull 했는데 conflict가 나면 그냥 수동으로 merge하는것이 낫더라
 - push 전에 브랜치 확인
-- reset 전에는 push 했는지 확인. 안 하면 날라감
-- 
