@@ -16,8 +16,8 @@ class WeatherData with _$WeatherData {
     required String windSpeedUnit,
     required String pressureUnit,
     required String timezone,
-    required double latitude,
-    required double longitude,
+    required num latitude,
+    required num longitude,
     required List<WeatherInfo> weatherInfoList,
   }) = _WeatherData;
 
