@@ -9,15 +9,15 @@ class MainViewModel extends GetxController {
     update();
 
     if (count.isEven) {
-      Get.changeTheme(ThemeData.dark());
+      Get.changeTheme(ThemeData.dark(useMaterial3: true));
     } else {
-      Get.changeTheme(ThemeData.light());
+      Get.changeTheme(ThemeData.light(useMaterial3: true));
     }
 
-    Get.showSnackbar(const GetSnackBar(
-      title: '테스트',
-      message: '테스트',
-    ));
+    // Get.showSnackbar(const GetSnackBar(
+    //   title: '테스트',
+    //   message: '테스트',
+    // ));
   }
 
 }

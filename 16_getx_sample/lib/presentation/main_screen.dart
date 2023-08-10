@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:getx_sample/presentation/main_view_model.dart';
 
-class MainScreen extends GetView<MainViewModel> {
-  const MainScreen({super.key});
+class MainScreen extends StatelessWidget {
+  final void Function() onEvent;
+  final int count;
+
+  const MainScreen({
+    super.key,
+    required this.onEvent,
+    required this.count,
+  });
 
   void _incrementCounter() {
-    controller.increment();
+    onEvent();
   }
 
   @override
@@ -23,10 +28,10 @@ class MainScreen extends GetView<MainViewModel> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Obx(() => Text(
-              '${controller.count}',
+            Text(
+              '${count}',
               style: Theme.of(context).textTheme.headlineMedium,
-            )),
+            ),
           ],
         ),
       ),
