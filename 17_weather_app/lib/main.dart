@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/core/router.dart';
-import 'package:weather_app/presentation/main_screen.dart';
+import 'package:weather_app/di/di_setup.dart';
 
 void main() {
+  configureDependencies();
   runApp(const MyApp());
 }
 

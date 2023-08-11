@@ -41,6 +41,9 @@ dependencies:
   go_router: ^10.0.0
   dio: ^5.3.2
   geolocator: ^9.0.2
+  intl: ^0.18.1
+  injectable: ^2.2.0
+  get_it: ^7.6.0
 
 
 dev_dependencies:
@@ -56,6 +59,7 @@ dev_dependencies:
   freezed: ^2.4.2
   json_serializable: ^6.7.1
   build_runner: ^2.4.6
+  injectable_generator: ^2.3.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
