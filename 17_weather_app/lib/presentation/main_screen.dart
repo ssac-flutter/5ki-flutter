@@ -14,7 +14,18 @@ class MainScreen extends StatelessWidget {
         title: const Text('날씨'),
       ),
       body: Center(
-        child: Text(state.currentWeatherInfo.toString()),
+        child: Column(
+          children: [
+            Text(state.currentWeatherInfo.toString()),
+            Expanded(
+              child: ListView(
+                children: state.dailyWeatherInfoList
+                    .map((e) => Text(e.toString()))
+                    .toList(),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

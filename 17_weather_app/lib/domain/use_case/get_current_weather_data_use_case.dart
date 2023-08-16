@@ -1,27 +1,23 @@
 import 'package:injectable/injectable.dart';
 import 'package:weather_app/core/result.dart';
-import 'package:weather_app/domain/location/location_tracker.dart';
-import 'package:weather_app/domain/repository/weather_repository.dart';
+import 'package:weather_app/domain/use_case/get_weekly_weather_data_use_case.dart';
 import 'package:weather_app/domain/weather/weather_info.dart';
 
 @singleton
 class GetCurrentWeatherDataUseCase {
-  final WeatherRepository _weatherRepository;
-  final LocationTracker _locationTracker;
+  final GetWeeklyWeatherDataUseCase _getWeeklyWeatherDataUseCase;
 
-  GetCurrentWeatherDataUseCase(this._weatherRepository, this._locationTracker);
+  GetCurrentWeatherDataUseCase(this._getWeeklyWeatherDataUseCase);
 
   Future<Result<WeatherInfo>> execute() async {
     try {
-      final (latitude, longitude) = await _locationTracker.getLocation();
-      final weatherData =
-          await _weatherRepository.getWeatherData(latitude, longitude);
-
       DateTime now = DateTime.now();
-      DateTime formattedDateTime = DateTime(now.year, now.month, now.day, now.hour, 0);
+      DateTime formattedDateTime =
+          DateTime(now.year, now.month, now.day, now.hour, 0);
 
-      final currentWeatherInfo = weatherData.weatherInfoList
-          .singleWhere((e) => e.time.toString() == formattedDateTime.toString());
+      final currentWeatherInfo = (await _getWeeklyWeatherDataUseCase.execute())
+          .singleWhere(
+              (e) => e.time.toString() == formattedDateTime.toString());
 
       return Success(currentWeatherInfo);
     } on Exception catch (e) {

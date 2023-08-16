@@ -10,6 +10,7 @@ part 'main_state.g.dart';
 class MainState with _$MainState {
   const factory MainState({
     WeatherInfo? currentWeatherInfo,
+    @Default([]) List<WeatherInfo> dailyWeatherInfoList,
   }) = _MainState;
 
   factory MainState.fromJson(Map<String, Object?> json) => _$MainStateFromJson(json);
