@@ -11,6 +11,7 @@ class MainState with _$MainState {
   const factory MainState({
     WeatherInfo? currentWeatherInfo,
     @Default([]) List<WeatherInfo> dailyWeatherInfoList,
+    @Default([]) List<WeatherInfo> todayWeatherInfoList,
   }) = _MainState;
 
   factory MainState.fromJson(Map<String, Object?> json) => _$MainStateFromJson(json);
