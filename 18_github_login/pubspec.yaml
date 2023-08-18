@@ -38,6 +38,7 @@ dependencies:
   firebase_auth: ^4.7.3
   firebase_core: ^2.15.1
   provider: ^6.0.5
+  flutter_naver_login: ^1.8.0
 
 dev_dependencies:
   flutter_test:
