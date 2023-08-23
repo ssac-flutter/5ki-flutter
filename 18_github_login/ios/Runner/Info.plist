@@ -56,5 +56,55 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+
+	<key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>test</string>
+            </array>
+        </dict>
+    </array>
+
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>naversearchapp</string>
+        <string>naversearchthirdlogin</string>
+    </array>
+    <key>naverServiceAppUrlScheme</key>
+    <string>test</string>
+    <key>naverConsumerKey</key>
+    <string>gXCqO9_0nwpZRvmdQHr1</string>
+    <key>naverConsumerSecret</key>
+    <string>kWKHv3OnLP</string>
+    <key>naverServiceAppName</key>
+    <string>test2</string>
+
+    <!-- http allows configurations -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+       <key>NSAllowsArbitraryLoads</key>
+       <true/>
+       <key>NSExceptionDomains</key>
+       <dict>
+          <key>naver.com</key>
+          <dict>
+             <key>NSExceptionRequiresForwardSecrecy</key>
+             <false/>
+             <key>NSIncludesSubdomains</key>
+             <true/>
+          </dict>
+          <key>naver.net</key>
+          <dict>
+             <key>NSExceptionRequiresForwardSecrecy</key>
+             <false/>
+             <key>NSIncludesSubdomains</key>
+             <true/>
+          </dict>
+       </dict>
+    </dict>
 </dict>
 </plist>
