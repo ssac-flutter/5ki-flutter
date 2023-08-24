@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:github_login/data/github_login.dart';
-import 'package:github_login/data/naver_login.dart';
 import 'package:github_login/domain/social_login.dart';
 
 class LoginViewModel with ChangeNotifier {
-  final SocialLogin _socialLogin = NaverLogin();
+  final SocialLogin _socialLogin;
+
+  LoginViewModel(this._socialLogin);
 
   bool isLogin = false;
 
