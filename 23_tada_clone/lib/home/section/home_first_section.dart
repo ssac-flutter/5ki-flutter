@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:tada_clone/home/components/bottom_search_input.dart';
+import 'package:tada_clone/home/home_state.dart';
 
 class HomeFirstSection extends StatelessWidget {
-  const HomeFirstSection({super.key});
+  final HomeState state;
+
+  const HomeFirstSection({
+    super.key,
+    required this.state,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +20,8 @@ class HomeFirstSection extends StatelessWidget {
         ),
         Column(
           children: [
-            Spacer(),
-            BottomSearchInput(name: '오준석'),
+            const Spacer(),
+            BottomSearchInput(state: state),
           ],
         ),
       ],

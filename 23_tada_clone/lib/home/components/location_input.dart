@@ -1,29 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:tada_clone/home/home_state.dart';
 
-class LocationInput extends StatelessWidget {
-  final String? depart;
-  final String? arrive;
+class LocationInput extends StatefulWidget {
+  final HomeState state;
   final void Function() onDepartClick;
   final void Function() onArriveClick;
 
   const LocationInput({
     super.key,
-    required this.depart,
-    required this.arrive,
+    required this.state,
     required this.onDepartClick,
     required this.onArriveClick,
   });
+
+  @override
+  State<LocationInput> createState() => _LocationInputState();
+}
+
+class _LocationInputState extends State<LocationInput> {
+  bool isDepartClicked = false;
+  bool isArriveClicked = false;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         GestureDetector(
-          onTap: onDepartClick,
+          onTapDown: (_) {
+            setState(() {
+              isDepartClicked = true;
+            });
+          },
+          onTapUp: (_) {
+            setState(() {
+              isDepartClicked = false;
+            });
+            widget.onDepartClick();
+          },
           child: Container(
             padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
-              color: const Color(0xffF3F8FE),
+              color: Color(isDepartClicked ? 0xffdbe8fc : 0xffF3F8FE),
               border: Border.all(
                 color: const Color(0xffB6D6F9),
               ),
@@ -41,19 +58,34 @@ class LocationInput extends StatelessWidget {
                 ),
                 const SizedBox(width: 16),
                 Text(
-                  depart == null ? '목적지 입력' : depart!,
-                  style: const TextStyle(fontSize: 16, color: Colors.grey),
+                  widget.state.depart == null ? '출발지 입력' : widget.state.depart!,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: widget.state.depart == null
+                        ? Colors.grey
+                        : Colors.black,
+                  ),
                 ),
               ],
             ),
           ),
         ),
         GestureDetector(
-          onTap: onArriveClick,
+          onTapDown: (_) {
+            setState(() {
+              isArriveClicked = true;
+            });
+          },
+          onTapUp: (_) {
+            setState(() {
+              isArriveClicked = false;
+            });
+            widget.onArriveClick();
+          },
           child: Container(
             padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
-              color: const Color(0xffF3F8FE),
+              color: Color(isArriveClicked ? 0xffdbe8fc : 0xffF3F8FE),
               border: Border.all(
                 color: const Color(0xffB6D6F9),
               ),
@@ -71,8 +103,13 @@ class LocationInput extends StatelessWidget {
                 ),
                 const SizedBox(width: 16),
                 Text(
-                  arrive == null ? '목적지 입력' : arrive!,
-                  style: const TextStyle(fontSize: 16, color: Colors.grey),
+                  widget.state.arrive == null ? '목적지 입력' : widget.state.arrive!,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: widget.state.arrive == null
+                        ? Colors.grey
+                        : Colors.black,
+                  ),
                 ),
                 const Spacer(),
                 const Icon(

@@ -4,10 +4,12 @@ import 'package:tada_clone/home/domain/model/address.dart';
 
 class HistoryList extends StatelessWidget {
   final List<Address> addresses;
+  final void Function(Address address) onClick;
 
   const HistoryList({
     super.key,
     required this.addresses,
+    required this.onClick,
   });
 
   @override
@@ -15,11 +17,16 @@ class HistoryList extends StatelessWidget {
     return Column(
       children: addresses
           .map(
-            (e) => AddressItem(
-              address: e,
-              icon: const Icon(
-                Icons.history,
-                color: Colors.grey,
+            (e) => InkWell(
+              onTap: () {
+                onClick(e);
+              },
+              child: AddressItem(
+                address: e,
+                icon: const Icon(
+                  Icons.history,
+                  color: Colors.grey,
+                ),
               ),
             ),
           )
