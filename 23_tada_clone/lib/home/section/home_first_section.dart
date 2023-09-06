@@ -6,15 +6,18 @@ class HomeFirstSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
-        Expanded(
-          child: Container(
-            width: double.infinity,
-            color: Colors.red,
-          ),
+        Container(
+          width: double.infinity,
+          color: Colors.red,
         ),
-        BottomSearchInput(name: '오준석'),
+        Column(
+          children: [
+            Spacer(),
+            BottomSearchInput(name: '오준석'),
+          ],
+        ),
       ],
     );
   }
