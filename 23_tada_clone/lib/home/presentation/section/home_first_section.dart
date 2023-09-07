@@ -21,25 +21,24 @@ class HomeFirstSection extends StatelessWidget {
       children: [
         NaverMap(
           options: const NaverMapViewOptions(),
-          onMapReady: (controller) {
-            locationTracker.getLocation().then((location) {
-              final (latitude, longitude) = location;
+          onMapReady: (controller) async {
+            final location = await locationTracker.getLocation();
+            final (latitude, longitude) = location;
 
-              final marker = NMarker(
-                id: "current",
-                icon: const NOverlayImage.fromAssetImage('assets/marker.png'),
-                position: NLatLng(latitude, longitude),
-              );
-              controller.addOverlay(marker);
-              controller.updateCamera(
-                NCameraUpdate.fromCameraPosition(
-                  NCameraPosition(
-                    target: NLatLng(latitude, longitude),
-                    zoom: 15,
-                  ),
+            final marker = NMarker(
+              id: "current",
+              icon: const NOverlayImage.fromAssetImage('assets/marker.png'),
+              position: NLatLng(latitude, longitude),
+            );
+            controller.addOverlay(marker);
+            controller.updateCamera(
+              NCameraUpdate.fromCameraPosition(
+                NCameraPosition(
+                  target: NLatLng(latitude, longitude),
+                  zoom: 15,
                 ),
-              );
-            });
+              ),
+            );
             print("네이버 맵 로딩됨!");
           },
         ),
