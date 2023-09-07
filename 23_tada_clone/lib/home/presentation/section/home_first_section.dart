@@ -32,7 +32,9 @@ class _HomeFirstSectionState extends State<HomeFirstSection> {
           child: Stack(
             children: [
               NaverMap(
-                options: const NaverMapViewOptions(),
+                options: const NaverMapViewOptions(
+                  scaleBarEnable: false,
+                ),
                 onCameraIdle: () {},
                 onCameraChange: (reason, animated) {
                   if (reason == NCameraUpdateReason.gesture) {
