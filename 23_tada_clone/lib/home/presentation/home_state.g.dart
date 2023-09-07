@@ -14,6 +14,13 @@ _$_HomeState _$$_HomeStateFromJson(Map<String, dynamic> json) => _$_HomeState(
               ?.map((e) => Address.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      currentLocation: _$recordConvertNullable(
+        json['currentLocation'],
+        ($jsonValue) => (
+          ($jsonValue[r'$1'] as num).toDouble(),
+          ($jsonValue[r'$2'] as num).toDouble(),
+        ),
+      ),
     );
 
 Map<String, dynamic> _$$_HomeStateToJson(_$_HomeState instance) =>
@@ -22,4 +29,16 @@ Map<String, dynamic> _$$_HomeStateToJson(_$_HomeState instance) =>
       'depart': instance.depart,
       'arrive': instance.arrive,
       'recentlyAddresses': instance.recentlyAddresses,
+      'currentLocation': instance.currentLocation == null
+          ? null
+          : {
+              r'$1': instance.currentLocation!.$1,
+              r'$2': instance.currentLocation!.$2,
+            },
     };
+
+$Rec? _$recordConvertNullable<$Rec>(
+  Object? value,
+  $Rec Function(Map) convert,
+) =>
+    value == null ? null : convert(value as Map<String, dynamic>);

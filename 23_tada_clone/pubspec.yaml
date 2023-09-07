@@ -38,6 +38,9 @@ dependencies:
   freezed_annotation: ^2.4.1
   json_annotation: ^4.8.1
   flutter_naver_map: ^1.0.2
+  geolocator: ^10.0.1
+  provider: ^6.0.5
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +68,7 @@ flutter:
   assets:
     - shorebird.yaml
     - assets/
+    - .env
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:

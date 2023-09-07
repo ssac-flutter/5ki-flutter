@@ -24,6 +24,7 @@ mixin _$HomeState {
   String? get depart => throw _privateConstructorUsedError;
   String? get arrive => throw _privateConstructorUsedError;
   List<Address> get recentlyAddresses => throw _privateConstructorUsedError;
+  (double, double)? get currentLocation => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +41,8 @@ abstract class $HomeStateCopyWith<$Res> {
       {String userName,
       String? depart,
       String? arrive,
-      List<Address> recentlyAddresses});
+      List<Address> recentlyAddresses,
+      (double, double)? currentLocation});
 }
 
 /// @nodoc
@@ -60,6 +62,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? depart = freezed,
     Object? arrive = freezed,
     Object? recentlyAddresses = null,
+    Object? currentLocation = freezed,
   }) {
     return _then(_value.copyWith(
       userName: null == userName
@@ -78,6 +81,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.recentlyAddresses
           : recentlyAddresses // ignore: cast_nullable_to_non_nullable
               as List<Address>,
+      currentLocation: freezed == currentLocation
+          ? _value.currentLocation
+          : currentLocation // ignore: cast_nullable_to_non_nullable
+              as (double, double)?,
     ) as $Val);
   }
 }
@@ -93,7 +100,8 @@ abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
       {String userName,
       String? depart,
       String? arrive,
-      List<Address> recentlyAddresses});
+      List<Address> recentlyAddresses,
+      (double, double)? currentLocation});
 }
 
 /// @nodoc
@@ -111,6 +119,7 @@ class __$$_HomeStateCopyWithImpl<$Res>
     Object? depart = freezed,
     Object? arrive = freezed,
     Object? recentlyAddresses = null,
+    Object? currentLocation = freezed,
   }) {
     return _then(_$_HomeState(
       userName: null == userName
@@ -129,6 +138,10 @@ class __$$_HomeStateCopyWithImpl<$Res>
           ? _value._recentlyAddresses
           : recentlyAddresses // ignore: cast_nullable_to_non_nullable
               as List<Address>,
+      currentLocation: freezed == currentLocation
+          ? _value.currentLocation
+          : currentLocation // ignore: cast_nullable_to_non_nullable
+              as (double, double)?,
     ));
   }
 }
@@ -140,7 +153,8 @@ class _$_HomeState with DiagnosticableTreeMixin implements _HomeState {
       {required this.userName,
       this.depart,
       this.arrive,
-      final List<Address> recentlyAddresses = const []})
+      final List<Address> recentlyAddresses = const [],
+      this.currentLocation})
       : _recentlyAddresses = recentlyAddresses;
 
   factory _$_HomeState.fromJson(Map<String, dynamic> json) =>
@@ -163,8 +177,11 @@ class _$_HomeState with DiagnosticableTreeMixin implements _HomeState {
   }
 
   @override
+  final (double, double)? currentLocation;
+
+  @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomeState(userName: $userName, depart: $depart, arrive: $arrive, recentlyAddresses: $recentlyAddresses)';
+    return 'HomeState(userName: $userName, depart: $depart, arrive: $arrive, recentlyAddresses: $recentlyAddresses, currentLocation: $currentLocation)';
   }
 
   @override
@@ -175,7 +192,8 @@ class _$_HomeState with DiagnosticableTreeMixin implements _HomeState {
       ..add(DiagnosticsProperty('userName', userName))
       ..add(DiagnosticsProperty('depart', depart))
       ..add(DiagnosticsProperty('arrive', arrive))
-      ..add(DiagnosticsProperty('recentlyAddresses', recentlyAddresses));
+      ..add(DiagnosticsProperty('recentlyAddresses', recentlyAddresses))
+      ..add(DiagnosticsProperty('currentLocation', currentLocation));
   }
 
   @override
@@ -188,13 +206,15 @@ class _$_HomeState with DiagnosticableTreeMixin implements _HomeState {
             (identical(other.depart, depart) || other.depart == depart) &&
             (identical(other.arrive, arrive) || other.arrive == arrive) &&
             const DeepCollectionEquality()
-                .equals(other._recentlyAddresses, _recentlyAddresses));
+                .equals(other._recentlyAddresses, _recentlyAddresses) &&
+            (identical(other.currentLocation, currentLocation) ||
+                other.currentLocation == currentLocation));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, userName, depart, arrive,
-      const DeepCollectionEquality().hash(_recentlyAddresses));
+      const DeepCollectionEquality().hash(_recentlyAddresses), currentLocation);
 
   @JsonKey(ignore: true)
   @override
@@ -215,7 +235,8 @@ abstract class _HomeState implements HomeState {
       {required final String userName,
       final String? depart,
       final String? arrive,
-      final List<Address> recentlyAddresses}) = _$_HomeState;
+      final List<Address> recentlyAddresses,
+      final (double, double)? currentLocation}) = _$_HomeState;
 
   factory _HomeState.fromJson(Map<String, dynamic> json) =
       _$_HomeState.fromJson;
@@ -228,6 +249,8 @@ abstract class _HomeState implements HomeState {
   String? get arrive;
   @override
   List<Address> get recentlyAddresses;
+  @override
+  (double, double)? get currentLocation;
   @override
   @JsonKey(ignore: true)
   _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>

@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:tada_clone/main/main_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await NaverMapSdk.instance.initialize(clientId: '');
+
+  await dotenv.load();
+  final naverMapClientId = dotenv.env['NAVER_MAP_CLIENT_ID'];
+
+  await NaverMapSdk.instance.initialize(clientId: naverMapClientId);
 
   runApp(const MyApp());
 }
@@ -25,4 +30,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
