@@ -17,37 +17,55 @@ class HomeFirstSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
       children: [
-        NaverMap(
-          options: const NaverMapViewOptions(),
-          onMapReady: (controller) async {
-            final location = await locationTracker.getLocation();
-            final (latitude, longitude) = location;
+        Expanded(
+          child: Stack(
+            children: [
+              NaverMap(
+                options: const NaverMapViewOptions(),
+                onMapReady: (controller) async {
+                  final location = await locationTracker.getLocation();
+                  final (latitude, longitude) = location;
 
-            final marker = NMarker(
-              id: "current",
-              icon: const NOverlayImage.fromAssetImage('assets/marker.png'),
-              position: NLatLng(latitude, longitude),
-            );
-            controller.addOverlay(marker);
-            controller.updateCamera(
-              NCameraUpdate.fromCameraPosition(
-                NCameraPosition(
-                  target: NLatLng(latitude, longitude),
-                  zoom: 15,
-                ),
+                  final marker = NMarker(
+                    id: "current",
+                    icon:
+                        const NOverlayImage.fromAssetImage('assets/marker.png'),
+                    position: NLatLng(latitude, longitude),
+                  );
+                  controller.addOverlay(marker);
+                  controller.updateCamera(
+                    NCameraUpdate.fromCameraPosition(
+                      NCameraPosition(
+                        target: NLatLng(latitude, longitude),
+                        zoom: 15,
+                      ),
+                    ),
+                  );
+                  print("네이버 맵 로딩됨!");
+                },
               ),
-            );
-            print("네이버 맵 로딩됨!");
-          },
+              Column(
+                children: [
+                  const Spacer(),
+                  Container(
+                    width: double.infinity,
+                    height: 10,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
-        Column(
-          children: [
-            const Spacer(),
-            BottomSearchInput(state: state),
-          ],
-        ),
+        BottomSearchInput(state: state),
       ],
     );
   }
