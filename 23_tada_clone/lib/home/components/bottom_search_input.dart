@@ -45,12 +45,7 @@ class BottomSearchInput extends StatelessWidget {
               onArriveClick: () {},
             ),
             HistoryList(
-              addresses: const [
-                Address(
-                  title: '문래역 [2호선]',
-                  address: '서울 영등포구 문래동3가 68-1',
-                )
-              ],
+              addresses: state.recentlyAddresses,
               onClick: (Address address) {
                 print(address);
               },
