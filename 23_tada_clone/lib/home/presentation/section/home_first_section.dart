@@ -5,7 +5,7 @@ import 'package:tada_clone/home/domain/location/location_tracker.dart';
 import '../components/bottom_search_input.dart';
 import '../home_state.dart';
 
-class HomeFirstSection extends StatelessWidget {
+class HomeFirstSection extends StatefulWidget {
   final HomeState state;
   final LocationTracker locationTracker;
 
@@ -16,6 +16,15 @@ class HomeFirstSection extends StatelessWidget {
   });
 
   @override
+  State<HomeFirstSection> createState() => _HomeFirstSectionState();
+}
+
+class _HomeFirstSectionState extends State<HomeFirstSection> {
+  var isVisibleCurrentPositionButton = false;
+
+  late NaverMapController _controller;
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -24,25 +33,16 @@ class HomeFirstSection extends StatelessWidget {
             children: [
               NaverMap(
                 options: const NaverMapViewOptions(),
+                onCameraIdle: () {},
+                onCameraChange: (reason, animated) {
+                  if (reason == NCameraUpdateReason.gesture) {
+                    setState(() {
+                      isVisibleCurrentPositionButton = true;
+                    });
+                  }
+                },
                 onMapReady: (controller) async {
-                  final location = await locationTracker.getLocation();
-                  final (latitude, longitude) = location;
-
-                  final marker = NMarker(
-                    id: "current",
-                    icon:
-                        const NOverlayImage.fromAssetImage('assets/marker.png'),
-                    position: NLatLng(latitude, longitude),
-                  );
-                  controller.addOverlay(marker);
-                  controller.updateCamera(
-                    NCameraUpdate.fromCameraPosition(
-                      NCameraPosition(
-                        target: NLatLng(latitude, longitude),
-                        zoom: 15,
-                      ),
-                    ),
-                  );
+                  await _getLocation(controller);
                   print("네이버 맵 로딩됨!");
                 },
               ),
@@ -62,11 +62,85 @@ class HomeFirstSection extends StatelessWidget {
                   ),
                 ],
               ),
+              if (isVisibleCurrentPositionButton)
+                Positioned(
+                  right: 16,
+                  bottom: 22,
+                  child: CurrentPositionButton(
+                    onClick: () {
+                      _getLocation(_controller);
+                    },
+                  ),
+                )
             ],
           ),
         ),
-        BottomSearchInput(state: state),
+        BottomSearchInput(state: widget.state),
       ],
+    );
+  }
+
+  Future<void> _getLocation(NaverMapController controller) async {
+    _controller = controller;
+
+    final location = await widget.locationTracker.getLocation();
+    final (latitude, longitude) = location;
+
+    final marker = NMarker(
+      id: "current",
+      icon: const NOverlayImage.fromAssetImage('assets/marker.png'),
+      position: NLatLng(latitude, longitude),
+    );
+
+    controller.clearOverlays();
+    controller.addOverlay(marker);
+
+    controller.updateCamera(
+      NCameraUpdate.fromCameraPosition(
+        NCameraPosition(
+          target: NLatLng(latitude, longitude),
+          zoom: 15,
+        ),
+      ),
+    );
+
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    setState(() {
+      isVisibleCurrentPositionButton = false;
+    });
+  }
+}
+
+class CurrentPositionButton extends StatelessWidget {
+  final void Function() onClick;
+
+  const CurrentPositionButton({
+    super.key,
+    required this.onClick,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onClick,
+      child: Container(
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 1,
+              blurRadius: 3,
+              offset: const Offset(1, 1),
+            ),
+          ],
+        ),
+        child: const Icon(Icons.my_location),
+      ),
     );
   }
 }
