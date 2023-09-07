@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:tada_clone/main/main_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await NaverMapSdk.instance.initialize(clientId: 'your key');
+
   runApp(const MyApp());
 }
 
