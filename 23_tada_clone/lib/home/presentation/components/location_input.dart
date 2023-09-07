@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tada_clone/home/home_state.dart';
+
+import '../home_state.dart';
 
 class LocationInput extends StatefulWidget {
   final HomeState state;

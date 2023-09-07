@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
-import 'package:tada_clone/home/components/bottom_search_input.dart';
-import 'package:tada_clone/home/home_state.dart';
+
+import '../components/bottom_search_input.dart';
+import '../home_state.dart';
 
 class HomeFirstSection extends StatelessWidget {
   final HomeState state;

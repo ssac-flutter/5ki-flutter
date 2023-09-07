@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tada_clone/home/domain/model/address.dart';
-import 'package:tada_clone/home/home_state.dart';
-import 'package:tada_clone/home/section/home_first_section.dart';
+
+import 'home_state.dart';
+import 'section/home_first_section.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

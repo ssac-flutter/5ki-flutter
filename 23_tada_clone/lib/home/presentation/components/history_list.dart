@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tada_clone/home/components/address_item.dart';
 import 'package:tada_clone/home/domain/model/address.dart';
+
+import 'address_item.dart';
 
 class HistoryList extends StatelessWidget {
   final List<Address> addresses;

@@ -4,7 +4,7 @@ import 'package:tada_clone/main/main_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await NaverMapSdk.instance.initialize(clientId: 'your key');
+  await NaverMapSdk.instance.initialize(clientId: 'jxjk65aeqj');
 
   runApp(const MyApp());
 }

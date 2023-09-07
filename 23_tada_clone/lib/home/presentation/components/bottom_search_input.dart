@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tada_clone/home/components/history_list.dart';
-import 'package:tada_clone/home/components/location_input.dart';
 import 'package:tada_clone/home/domain/model/address.dart';
-import 'package:tada_clone/home/home_state.dart';
+
+import '../home_state.dart';
+import 'history_list.dart';
+import 'location_input.dart';
 
 class BottomSearchInput extends StatelessWidget {
   final HomeState state;

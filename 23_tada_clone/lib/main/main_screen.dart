@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tada_clone/home/home_screen.dart';
+import 'package:tada_clone/home/presentation/home_screen.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
