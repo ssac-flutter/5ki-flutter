@@ -14,25 +14,29 @@ class HomeFirstSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final marker = NMarker(
-      id: "test",
-      icon: NOverlayImage.fromAssetImage('assets/marker.png'),
-      position: NLatLng(37.51777036747807, 126.88612005018928),
-    );
     return Stack(
       children: [
         NaverMap(
           options: const NaverMapViewOptions(),
           onMapReady: (controller) async {
-            controller.addOverlay(marker);
-            controller.updateCamera(
-              NCameraUpdate.fromCameraPosition(
-                NCameraPosition(
-                  target: NLatLng(37.51777036747807, 126.88612005018928),
-                  zoom: 15,
+            if (state.currentLocation != null) {
+              final (latitude, longitude) = state.currentLocation!;
+
+              final marker = NMarker(
+                id: "current",
+                icon: const NOverlayImage.fromAssetImage('assets/marker.png'),
+                position: NLatLng(latitude, longitude),
+              );
+              controller.addOverlay(marker);
+              controller.updateCamera(
+                NCameraUpdate.fromCameraPosition(
+                  NCameraPosition(
+                    target: NLatLng(latitude, longitude),
+                    zoom: 15,
+                  ),
                 ),
-              ),
-            );
+              );
+            }
             print("네이버 맵 로딩됨!");
           },
         ),
