@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:tada_clone/home/data/location/geolocator_location_tracker.dart';
 import 'package:tada_clone/home/domain/location/location_tracker.dart';
 import 'package:tada_clone/home/domain/model/address.dart';
+import 'package:tada_clone/home/presentation/home_event.dart';
 import 'package:tada_clone/home/presentation/home_state.dart';
 
 class HomeViewModel with ChangeNotifier {
@@ -26,5 +29,16 @@ class HomeViewModel with ChangeNotifier {
       _state = state.copyWith(currentLocation: location);
       notifyListeners();
     });
+  }
+
+  void onEvent(HomeEvent event) {
+    switch (event) {
+      case DepartClick():
+        log('DepartClick');
+      case ArriveClick():
+        log('ArriveClick');
+      case HistoryClick():
+        log('HistoryClick');
+    }
   }
 }

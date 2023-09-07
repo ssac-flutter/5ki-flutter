@@ -79,7 +79,7 @@ class _LocationInputState extends State<LocationInput> {
         GestureDetector(
           onTapCancel: () {
             setState(() {
-              isDepartClicked = false;
+              isArriveClicked = false;
             });
           },
           onTapDown: (_) {

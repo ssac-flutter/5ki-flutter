@@ -3,16 +3,19 @@ import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:tada_clone/home/domain/location/location_tracker.dart';
 
 import '../components/bottom_search_input.dart';
+import '../home_event.dart';
 import '../home_state.dart';
 
 class HomeFirstSection extends StatefulWidget {
   final HomeState state;
   final LocationTracker locationTracker;
+  final void Function(HomeEvent event) onEvent;
 
   const HomeFirstSection({
     super.key,
     required this.state,
     required this.locationTracker,
+    required this.onEvent,
   });
 
   @override
@@ -77,7 +80,10 @@ class _HomeFirstSectionState extends State<HomeFirstSection> {
             ],
           ),
         ),
-        BottomSearchInput(state: widget.state),
+        BottomSearchInput(
+          state: widget.state,
+          onEvent: widget.onEvent,
+        ),
       ],
     );
   }

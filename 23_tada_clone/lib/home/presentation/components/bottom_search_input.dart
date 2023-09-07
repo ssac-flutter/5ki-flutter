@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tada_clone/home/domain/model/address.dart';
+import 'package:tada_clone/home/presentation/home_event.dart';
 
 import '../home_state.dart';
 import 'history_list.dart';
@@ -7,10 +8,12 @@ import 'location_input.dart';
 
 class BottomSearchInput extends StatelessWidget {
   final HomeState state;
+  final void Function(HomeEvent event) onEvent;
 
   const BottomSearchInput({
     super.key,
     required this.state,
+    required this.onEvent,
   });
 
   @override
@@ -36,8 +39,8 @@ class BottomSearchInput extends StatelessWidget {
             const SizedBox(height: 16),
             LocationInput(
               state: state,
-              onDepartClick: () {},
-              onArriveClick: () {},
+              onDepartClick: () => onEvent(HomeEvent.departClick()),
+              onArriveClick: () => onEvent(HomeEvent.arriveClick()),
             ),
             HistoryList(
               addresses: state.recentlyAddresses,
