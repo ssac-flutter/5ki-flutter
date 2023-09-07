@@ -27,6 +27,11 @@ class _LocationInputState extends State<LocationInput> {
     return Column(
       children: [
         GestureDetector(
+          onTapCancel: () {
+            setState(() {
+              isDepartClicked = false;
+            });
+          },
           onTapDown: (_) {
             setState(() {
               isDepartClicked = true;
@@ -72,6 +77,11 @@ class _LocationInputState extends State<LocationInput> {
           ),
         ),
         GestureDetector(
+          onTapCancel: () {
+            setState(() {
+              isDepartClicked = false;
+            });
+          },
           onTapDown: (_) {
             setState(() {
               isArriveClicked = true;
