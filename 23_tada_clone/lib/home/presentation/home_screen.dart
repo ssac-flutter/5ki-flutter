@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tada_clone/home/data/location/geolocator_location_tracker.dart';
 import 'package:tada_clone/home/presentation/home_view_model.dart';
 
 import 'section/home_first_section.dart';
@@ -10,6 +11,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<HomeViewModel>();
-    return HomeFirstSection(state: viewModel.state);
+    return HomeFirstSection(
+      state: viewModel.state,
+      locationTracker: GeolocatorLocationTracker(),
+    );
   }
 }

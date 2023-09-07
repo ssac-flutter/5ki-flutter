@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
+import 'package:tada_clone/home/domain/location/location_tracker.dart';
 
 import '../components/bottom_search_input.dart';
 import '../home_state.dart';
 
 class HomeFirstSection extends StatelessWidget {
   final HomeState state;
+  final LocationTracker locationTracker;
 
   const HomeFirstSection({
     super.key,
     required this.state,
+    required this.locationTracker,
   });
 
   @override
@@ -18,9 +21,9 @@ class HomeFirstSection extends StatelessWidget {
       children: [
         NaverMap(
           options: const NaverMapViewOptions(),
-          onMapReady: (controller) async {
-            if (state.currentLocation != null) {
-              final (latitude, longitude) = state.currentLocation!;
+          onMapReady: (controller) {
+            locationTracker.getLocation().then((location) {
+              final (latitude, longitude) = location;
 
               final marker = NMarker(
                 id: "current",
@@ -36,7 +39,7 @@ class HomeFirstSection extends StatelessWidget {
                   ),
                 ),
               );
-            }
+            });
             print("네이버 맵 로딩됨!");
           },
         ),

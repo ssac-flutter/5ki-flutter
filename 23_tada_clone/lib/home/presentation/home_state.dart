@@ -13,7 +13,6 @@ class HomeState with _$HomeState {
     String? depart,
     String? arrive,
     @Default([]) List<Address> recentlyAddresses,
-    (double, double)? currentLocation,
   }) = _HomeState;
 
   factory HomeState.fromJson(Map<String, Object?> json) =>
