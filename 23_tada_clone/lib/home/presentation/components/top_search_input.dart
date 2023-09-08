@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tada_clone/home/presentation/components/tada_textfield.dart';
 
 import '../home_state.dart';
 
-class TopSearchInput extends StatefulWidget {
+class TopSearchInput extends StatelessWidget {
   final HomeState state;
 
   const TopSearchInput({
@@ -11,29 +12,48 @@ class TopSearchInput extends StatefulWidget {
   });
 
   @override
-  State<TopSearchInput> createState() => _TopSearchInputState();
-}
-
-class _TopSearchInputState extends State<TopSearchInput> {
-  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextField(
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            prefixIcon: const Icon(
-              Icons.square_sharp,
+        TadaTextField(
+          icon: Icons.square_outlined,
+          hintText: '출발지 입력',
+          text: state.depart,
+          suffixWidget: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.close,
               color: Color(0xff35497A),
               size: 12,
             ),
-            labelText: widget.state.depart,
-            suffixIcon: IconButton(
+          ),
+        ),
+        const SizedBox(height: 8),
+        TadaTextField(
+          icon: Icons.square,
+          hintText: '목적지 입력',
+          text: state.arrive,
+          suffixWidget: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 14.0,
+              vertical: 4.0,
+            ),
+            child: OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                  minimumSize: Size.zero,
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  side: const BorderSide(
+                    color: Colors.blue,
+                  ),
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(6)))),
               onPressed: () {},
-              icon: const Icon(
-                Icons.close,
-                color: Color(0xff35497A),
-                size: 12,
+              child: const Text(
+                '+ 경유',
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
