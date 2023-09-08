@@ -21,10 +21,11 @@ HomeState _$HomeStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$HomeState {
   String get userName => throw _privateConstructorUsedError;
+  int get sectionNumber => throw _privateConstructorUsedError;
   String? get depart => throw _privateConstructorUsedError;
   String? get arrive => throw _privateConstructorUsedError;
   List<Address> get recentlyAddresses => throw _privateConstructorUsedError;
-  (double, double)? get currentLocation => throw _privateConstructorUsedError;
+  List<Address> get searchResultAddresses => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,10 +40,11 @@ abstract class $HomeStateCopyWith<$Res> {
   @useResult
   $Res call(
       {String userName,
+      int sectionNumber,
       String? depart,
       String? arrive,
       List<Address> recentlyAddresses,
-      (double, double)? currentLocation});
+      List<Address> searchResultAddresses});
 }
 
 /// @nodoc
@@ -59,16 +61,21 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @override
   $Res call({
     Object? userName = null,
+    Object? sectionNumber = null,
     Object? depart = freezed,
     Object? arrive = freezed,
     Object? recentlyAddresses = null,
-    Object? currentLocation = freezed,
+    Object? searchResultAddresses = null,
   }) {
     return _then(_value.copyWith(
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String,
+      sectionNumber: null == sectionNumber
+          ? _value.sectionNumber
+          : sectionNumber // ignore: cast_nullable_to_non_nullable
+              as int,
       depart: freezed == depart
           ? _value.depart
           : depart // ignore: cast_nullable_to_non_nullable
@@ -81,10 +88,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.recentlyAddresses
           : recentlyAddresses // ignore: cast_nullable_to_non_nullable
               as List<Address>,
-      currentLocation: freezed == currentLocation
-          ? _value.currentLocation
-          : currentLocation // ignore: cast_nullable_to_non_nullable
-              as (double, double)?,
+      searchResultAddresses: null == searchResultAddresses
+          ? _value.searchResultAddresses
+          : searchResultAddresses // ignore: cast_nullable_to_non_nullable
+              as List<Address>,
     ) as $Val);
   }
 }
@@ -98,10 +105,11 @@ abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
   @useResult
   $Res call(
       {String userName,
+      int sectionNumber,
       String? depart,
       String? arrive,
       List<Address> recentlyAddresses,
-      (double, double)? currentLocation});
+      List<Address> searchResultAddresses});
 }
 
 /// @nodoc
@@ -116,16 +124,21 @@ class __$$_HomeStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userName = null,
+    Object? sectionNumber = null,
     Object? depart = freezed,
     Object? arrive = freezed,
     Object? recentlyAddresses = null,
-    Object? currentLocation = freezed,
+    Object? searchResultAddresses = null,
   }) {
     return _then(_$_HomeState(
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String,
+      sectionNumber: null == sectionNumber
+          ? _value.sectionNumber
+          : sectionNumber // ignore: cast_nullable_to_non_nullable
+              as int,
       depart: freezed == depart
           ? _value.depart
           : depart // ignore: cast_nullable_to_non_nullable
@@ -138,10 +151,10 @@ class __$$_HomeStateCopyWithImpl<$Res>
           ? _value._recentlyAddresses
           : recentlyAddresses // ignore: cast_nullable_to_non_nullable
               as List<Address>,
-      currentLocation: freezed == currentLocation
-          ? _value.currentLocation
-          : currentLocation // ignore: cast_nullable_to_non_nullable
-              as (double, double)?,
+      searchResultAddresses: null == searchResultAddresses
+          ? _value._searchResultAddresses
+          : searchResultAddresses // ignore: cast_nullable_to_non_nullable
+              as List<Address>,
     ));
   }
 }
@@ -151,17 +164,21 @@ class __$$_HomeStateCopyWithImpl<$Res>
 class _$_HomeState with DiagnosticableTreeMixin implements _HomeState {
   const _$_HomeState(
       {required this.userName,
+      required this.sectionNumber,
       this.depart,
       this.arrive,
       final List<Address> recentlyAddresses = const [],
-      this.currentLocation})
-      : _recentlyAddresses = recentlyAddresses;
+      final List<Address> searchResultAddresses = const []})
+      : _recentlyAddresses = recentlyAddresses,
+        _searchResultAddresses = searchResultAddresses;
 
   factory _$_HomeState.fromJson(Map<String, dynamic> json) =>
       _$$_HomeStateFromJson(json);
 
   @override
   final String userName;
+  @override
+  final int sectionNumber;
   @override
   final String? depart;
   @override
@@ -176,12 +193,19 @@ class _$_HomeState with DiagnosticableTreeMixin implements _HomeState {
     return EqualUnmodifiableListView(_recentlyAddresses);
   }
 
+  final List<Address> _searchResultAddresses;
   @override
-  final (double, double)? currentLocation;
+  @JsonKey()
+  List<Address> get searchResultAddresses {
+    if (_searchResultAddresses is EqualUnmodifiableListView)
+      return _searchResultAddresses;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_searchResultAddresses);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HomeState(userName: $userName, depart: $depart, arrive: $arrive, recentlyAddresses: $recentlyAddresses, currentLocation: $currentLocation)';
+    return 'HomeState(userName: $userName, sectionNumber: $sectionNumber, depart: $depart, arrive: $arrive, recentlyAddresses: $recentlyAddresses, searchResultAddresses: $searchResultAddresses)';
   }
 
   @override
@@ -190,10 +214,12 @@ class _$_HomeState with DiagnosticableTreeMixin implements _HomeState {
     properties
       ..add(DiagnosticsProperty('type', 'HomeState'))
       ..add(DiagnosticsProperty('userName', userName))
+      ..add(DiagnosticsProperty('sectionNumber', sectionNumber))
       ..add(DiagnosticsProperty('depart', depart))
       ..add(DiagnosticsProperty('arrive', arrive))
       ..add(DiagnosticsProperty('recentlyAddresses', recentlyAddresses))
-      ..add(DiagnosticsProperty('currentLocation', currentLocation));
+      ..add(
+          DiagnosticsProperty('searchResultAddresses', searchResultAddresses));
   }
 
   @override
@@ -203,18 +229,26 @@ class _$_HomeState with DiagnosticableTreeMixin implements _HomeState {
             other is _$_HomeState &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
+            (identical(other.sectionNumber, sectionNumber) ||
+                other.sectionNumber == sectionNumber) &&
             (identical(other.depart, depart) || other.depart == depart) &&
             (identical(other.arrive, arrive) || other.arrive == arrive) &&
             const DeepCollectionEquality()
                 .equals(other._recentlyAddresses, _recentlyAddresses) &&
-            (identical(other.currentLocation, currentLocation) ||
-                other.currentLocation == currentLocation));
+            const DeepCollectionEquality()
+                .equals(other._searchResultAddresses, _searchResultAddresses));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, userName, depart, arrive,
-      const DeepCollectionEquality().hash(_recentlyAddresses), currentLocation);
+  int get hashCode => Object.hash(
+      runtimeType,
+      userName,
+      sectionNumber,
+      depart,
+      arrive,
+      const DeepCollectionEquality().hash(_recentlyAddresses),
+      const DeepCollectionEquality().hash(_searchResultAddresses));
 
   @JsonKey(ignore: true)
   @override
@@ -233,10 +267,11 @@ class _$_HomeState with DiagnosticableTreeMixin implements _HomeState {
 abstract class _HomeState implements HomeState {
   const factory _HomeState(
       {required final String userName,
+      required final int sectionNumber,
       final String? depart,
       final String? arrive,
       final List<Address> recentlyAddresses,
-      final (double, double)? currentLocation}) = _$_HomeState;
+      final List<Address> searchResultAddresses}) = _$_HomeState;
 
   factory _HomeState.fromJson(Map<String, dynamic> json) =
       _$_HomeState.fromJson;
@@ -244,13 +279,15 @@ abstract class _HomeState implements HomeState {
   @override
   String get userName;
   @override
+  int get sectionNumber;
+  @override
   String? get depart;
   @override
   String? get arrive;
   @override
   List<Address> get recentlyAddresses;
   @override
-  (double, double)? get currentLocation;
+  List<Address> get searchResultAddresses;
   @override
   @JsonKey(ignore: true)
   _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>

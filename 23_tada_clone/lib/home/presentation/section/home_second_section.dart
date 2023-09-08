@@ -78,27 +78,28 @@ class _HomeSecondSectionState extends State<HomeSecondSection> {
           ),
           const SizedBox(height: 24),
           if (isVisibleRecentlyHistory)
-            const Row(
-              children: [
-                SizedBox(width: 32),
-                Text('최근 내역'),
-                Spacer(),
-                Text('편집>'),
-                SizedBox(width: 16),
-              ],
-            ),
-          if (isVisibleRecentlyHistory)
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32),
+              padding: const EdgeInsets.only(left: 32),
               child: HistoryList(
+                header: const Row(
+                  children: [
+                    Text('최근 내역'),
+                    Spacer(),
+                    Text('편집>'),
+                    SizedBox(width: 16),
+                  ],
+                ),
                 addresses: widget.state.recentlyAddresses,
                 onClick: (address) {},
               ),
             ),
           if (isVisibleSearchResult)
-            AddressList(
-              addresses: widget.state.searchResultAddresses,
-              onClick: (address) {},
+            Padding(
+              padding: const EdgeInsets.only(left: 32),
+              child: AddressList(
+                addresses: widget.state.searchResultAddresses,
+                onClick: (address) {},
+              ),
             ),
         ],
       ),
