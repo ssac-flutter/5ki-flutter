@@ -7,7 +7,7 @@ import 'package:tada_clone/home/presentation/home_state.dart';
 
 class HomeViewModel with ChangeNotifier {
   HomeState _state = const HomeState(
-    sectionNumber: 1,
+    section: HomeSection.first,
     userName: '오준석',
     depart: '현위치',
     recentlyAddresses: [
@@ -37,8 +37,8 @@ class HomeViewModel with ChangeNotifier {
       case HistoryClick():
         log('HistoryClick');
       case ChangeSection():
-        log('ChangeSection : ${event.sectionNumber}');
-        _state = state.copyWith(sectionNumber: event.sectionNumber);
+        log('ChangeSection : ${event.section}');
+        _state = state.copyWith(section: event.section);
         notifyListeners();
     }
   }

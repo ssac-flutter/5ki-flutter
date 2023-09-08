@@ -1,4 +1,5 @@
 import 'package:tada_clone/home/domain/model/address.dart';
+import 'package:tada_clone/home/presentation/home_state.dart';
 
 sealed class HomeEvent {
   factory HomeEvent.departClick() = DepartClick;
@@ -7,7 +8,7 @@ sealed class HomeEvent {
 
   factory HomeEvent.historyClick(Address address) = HistoryClick;
 
-  factory HomeEvent.changeSection(int sectionNumber) = ChangeSection;
+  factory HomeEvent.changeSection(HomeSection section) = ChangeSection;
 }
 
 class DepartClick implements HomeEvent {}
@@ -21,7 +22,7 @@ class HistoryClick implements HomeEvent {
 }
 
 class ChangeSection implements HomeEvent {
-  final int sectionNumber;
+  final HomeSection section;
 
-  ChangeSection(this.sectionNumber);
+  ChangeSection(this.section);
 }

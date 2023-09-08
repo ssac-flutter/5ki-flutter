@@ -9,7 +9,7 @@ part 'home_state.freezed.dart';
 class HomeState with _$HomeState {
   const factory HomeState({
     required String userName,
-    required int sectionNumber,
+    required HomeSection section,
     String? depart,
     String? arrive,
     HomeEvent? lastEvent,
@@ -17,3 +17,5 @@ class HomeState with _$HomeState {
     @Default([]) List<Address> searchResultAddresses,
   }) = _HomeState;
 }
+
+enum HomeSection { first, second, third, forth }
