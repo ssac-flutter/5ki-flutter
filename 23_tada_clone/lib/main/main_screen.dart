@@ -4,25 +4,42 @@ import 'package:tada_clone/home/presentation/home_screen.dart';
 
 import '../home/presentation/home_view_model.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  bool hasBottomNavigationMenu = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ChangeNotifierProvider(
         create: (_) => HomeViewModel(),
-        child: const HomeScreen(),
+        child: HomeScreen(
+          onChangeBottomNavigationVisibility: (bool hasBottomNavigation) {
+            setState(() {
+              hasBottomNavigationMenu = hasBottomNavigation;
+            });
+          },
+        ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
-          BottomNavigationBarItem(icon: Icon(Icons.watch_later), label: '예약'),
-          BottomNavigationBarItem(icon: Icon(Icons.card_giftcard), label: '혜택'),
-          BottomNavigationBarItem(icon: Icon(Icons.menu), label: '메뉴'),
-        ],
-        type: BottomNavigationBarType.fixed,
-      ),
+      bottomNavigationBar: hasBottomNavigationMenu
+          ? BottomNavigationBar(
+              items: const [
+                BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.watch_later), label: '예약'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.card_giftcard), label: '혜택'),
+                BottomNavigationBarItem(icon: Icon(Icons.menu), label: '메뉴'),
+              ],
+              type: BottomNavigationBarType.fixed,
+            )
+          : null,
     );
   }
 }

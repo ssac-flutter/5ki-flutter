@@ -8,7 +8,13 @@ import 'package:tada_clone/home/presentation/section/home_second_section.dart';
 import 'section/home_first_section.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final void Function(bool hasBottomNavigation)
+      onChangeBottomNavigationVisibility;
+
+  const HomeScreen({
+    super.key,
+    required this.onChangeBottomNavigationVisibility,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +25,7 @@ class HomeScreen extends StatelessWidget {
           locationTracker: GeolocatorLocationTracker(),
           onEvent: (HomeEvent event) {
             if (event is DepartClick) {
+              onChangeBottomNavigationVisibility(false);
               viewModel.onEvent(HomeEvent.changeSection(2));
             }
             viewModel.onEvent(event);
@@ -27,6 +34,7 @@ class HomeScreen extends StatelessWidget {
       2 => HomeSecondSection(
           state: viewModel.state,
           onBack: () {
+            onChangeBottomNavigationVisibility(true);
             viewModel.onEvent(HomeEvent.changeSection(1));
           },
         ),
