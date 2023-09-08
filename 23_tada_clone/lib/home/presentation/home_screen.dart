@@ -27,6 +27,9 @@ class HomeScreen extends StatelessWidget {
             if (event is DepartClick) {
               onChangeBottomNavigationVisibility(false);
               viewModel.onEvent(HomeEvent.changeSection(2));
+            } else if (event is ArriveClick) {
+              onChangeBottomNavigationVisibility(false);
+              viewModel.onEvent(HomeEvent.changeSection(2));
             }
             viewModel.onEvent(event);
           },

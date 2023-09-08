@@ -31,8 +31,10 @@ class HomeViewModel with ChangeNotifier {
     switch (event) {
       case DepartClick():
         log('DepartClick');
+        _state = state.copyWith(lastEvent: event);
       case ArriveClick():
         log('ArriveClick');
+        _state = state.copyWith(lastEvent: event);
       case HistoryClick():
         log('HistoryClick');
       case ChangeSection():

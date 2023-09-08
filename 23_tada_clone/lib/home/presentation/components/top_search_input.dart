@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tada_clone/home/presentation/components/tada_textfield.dart';
+import 'package:tada_clone/home/presentation/home_event.dart';
 import 'dart:math' as math;
 
 import '../home_state.dart';
@@ -21,6 +22,7 @@ class TopSearchInput extends StatelessWidget {
     return Column(
       children: [
         TadaTextField(
+          focus: state.lastEvent is DepartClick,
           icon: Icons.square_outlined,
           hintText: '출발지 입력',
           text: state.depart,
@@ -39,6 +41,7 @@ class TopSearchInput extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         TadaTextField(
+          focus: state.lastEvent is ArriveClick,
           icon: Icons.square,
           hintText: '목적지 입력',
           text: state.arrive,

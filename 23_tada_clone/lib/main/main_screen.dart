@@ -21,6 +21,10 @@ class _MainScreenState extends State<MainScreen> {
         create: (_) => HomeViewModel(),
         child: HomeScreen(
           onChangeBottomNavigationVisibility: (bool hasBottomNavigation) {
+            if (hasBottomNavigationMenu == hasBottomNavigation) {
+              return;
+            }
+
             setState(() {
               hasBottomNavigationMenu = hasBottomNavigation;
             });

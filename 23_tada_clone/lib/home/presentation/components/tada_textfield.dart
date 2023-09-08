@@ -5,6 +5,7 @@ class TadaTextField extends StatefulWidget {
   final String? hintText;
   final String? text;
   final Widget? suffixWidget;
+  final bool focus;
   final void Function(String text) onChange;
 
   const TadaTextField({
@@ -14,6 +15,7 @@ class TadaTextField extends StatefulWidget {
     this.text,
     this.suffixWidget,
     required this.onChange,
+    this.focus = false,
   });
 
   @override
@@ -29,6 +31,12 @@ class _TadaTextFieldState extends State<TadaTextField> {
   void initState() {
     super.initState();
     focusNode.addListener(_handleFocusChange);
+
+    Future.microtask(() {
+      if (widget.focus) {
+        FocusScope.of(context).requestFocus(focusNode);
+      }
+    });
   }
 
   void _handleFocusChange() {
