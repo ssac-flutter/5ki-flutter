@@ -82,7 +82,9 @@ class _HomeFirstSectionState extends State<HomeFirstSection> {
         ),
         BottomSearchInput(
           state: widget.state,
-          onEvent: widget.onEvent,
+          onEvent: (e) {
+            widget.onEvent(e);
+          },
         ),
       ],
     );

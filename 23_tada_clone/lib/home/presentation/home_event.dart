@@ -6,6 +6,8 @@ sealed class HomeEvent {
   factory HomeEvent.arriveClick() = ArriveClick;
 
   factory HomeEvent.historyClick(Address address) = HistoryClick;
+
+  factory HomeEvent.changeSection(int sectionNumber) = ChangeSection;
 }
 
 class DepartClick implements HomeEvent {}
@@ -16,4 +18,10 @@ class HistoryClick implements HomeEvent {
   final Address address;
 
   HistoryClick(this.address);
+}
+
+class ChangeSection implements HomeEvent {
+  final int sectionNumber;
+
+  ChangeSection(this.sectionNumber);
 }

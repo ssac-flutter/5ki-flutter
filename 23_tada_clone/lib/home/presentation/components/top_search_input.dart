@@ -5,10 +5,14 @@ import '../home_state.dart';
 
 class TopSearchInput extends StatelessWidget {
   final HomeState state;
+  final void Function(String text) onDepartChange;
+  final void Function(String text) onArriveChange;
 
   const TopSearchInput({
     super.key,
     required this.state,
+    required this.onDepartChange,
+    required this.onArriveChange,
   });
 
   @override
@@ -27,6 +31,7 @@ class TopSearchInput extends StatelessWidget {
               size: 12,
             ),
           ),
+          onChange: onDepartChange,
         ),
         const SizedBox(height: 8),
         TadaTextField(
@@ -57,6 +62,7 @@ class TopSearchInput extends StatelessWidget {
               ),
             ),
           ),
+          onChange: onArriveChange,
         ),
       ],
     );

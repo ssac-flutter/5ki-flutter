@@ -1,16 +1,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:tada_clone/home/data/location/geolocator_location_tracker.dart';
-import 'package:tada_clone/home/domain/location/location_tracker.dart';
 import 'package:tada_clone/home/domain/model/address.dart';
 import 'package:tada_clone/home/presentation/home_event.dart';
 import 'package:tada_clone/home/presentation/home_state.dart';
 
 class HomeViewModel with ChangeNotifier {
-  final LocationTracker _locationTracker = GeolocatorLocationTracker();
-
   HomeState _state = const HomeState(
+    sectionNumber: 1,
     userName: '오준석',
     depart: '현위치',
     arrive: '서울',
@@ -20,16 +17,15 @@ class HomeViewModel with ChangeNotifier {
         address: '서울 영등포구 문래동3가 68-1',
       )
     ],
+    searchResultAddresses: [
+      Address(
+        title: '수원역',
+        address: '서울 영등포구 문래동3가 68-1',
+      )
+    ],
   );
 
   HomeState get state => _state;
-
-  HomeViewModel() {
-    _locationTracker.getLocation().then((location) {
-      _state = state.copyWith(currentLocation: location);
-      notifyListeners();
-    });
-  }
 
   void onEvent(HomeEvent event) {
     switch (event) {
@@ -39,6 +35,10 @@ class HomeViewModel with ChangeNotifier {
         log('ArriveClick');
       case HistoryClick():
         log('HistoryClick');
+      case ChangeSection():
+        log('ChangeSection : ${event.sectionNumber}');
+        _state = state.copyWith(sectionNumber: event.sectionNumber);
+        notifyListeners();
     }
   }
 }

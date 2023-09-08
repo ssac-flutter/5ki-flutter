@@ -10,9 +10,11 @@ part 'home_state.g.dart';
 class HomeState with _$HomeState {
   const factory HomeState({
     required String userName,
+    required int sectionNumber,
     String? depart,
     String? arrive,
     @Default([]) List<Address> recentlyAddresses,
+    @Default([]) List<Address> searchResultAddresses,
   }) = _HomeState;
 
   factory HomeState.fromJson(Map<String, Object?> json) =>

@@ -5,6 +5,7 @@ class TadaTextField extends StatefulWidget {
   final String? hintText;
   final String? text;
   final Widget? suffixWidget;
+  final void Function(String text) onChange;
 
   const TadaTextField({
     super.key,
@@ -12,6 +13,7 @@ class TadaTextField extends StatefulWidget {
     this.hintText,
     this.text,
     this.suffixWidget,
+    required this.onChange,
   });
 
   @override
@@ -47,6 +49,7 @@ class _TadaTextFieldState extends State<TadaTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: widget.onChange,
       focusNode: focusNode,
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
@@ -69,10 +72,8 @@ class _TadaTextFieldState extends State<TadaTextField> {
           color: hasFocused ? const Color(0xff35497A) : Colors.black,
           size: 12,
         ),
-        hintText: widget.text,
-        suffixIcon: hasFocused
-            ? widget.suffixWidget
-            : null,
+        hintText: widget.hintText,
+        suffixIcon: hasFocused ? widget.suffixWidget : null,
       ),
     );
   }
