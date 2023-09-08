@@ -36,6 +36,7 @@ class _TadaTextFieldState extends State<TadaTextField> {
       if (widget.focus) {
         FocusScope.of(context).requestFocus(focusNode);
       }
+      textEditingController.text = widget.text ?? '';
     });
   }
 
@@ -57,6 +58,7 @@ class _TadaTextFieldState extends State<TadaTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: textEditingController,
       onChanged: widget.onChange,
       focusNode: focusNode,
       decoration: InputDecoration(

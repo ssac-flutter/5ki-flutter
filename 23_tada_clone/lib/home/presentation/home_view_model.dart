@@ -10,7 +10,6 @@ class HomeViewModel with ChangeNotifier {
     sectionNumber: 1,
     userName: '오준석',
     depart: '현위치',
-    arrive: '서울',
     recentlyAddresses: [
       Address(
         title: '문래역 [2호선]',
