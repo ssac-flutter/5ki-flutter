@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tada_clone/home/presentation/components/address_list.dart';
+import 'package:tada_clone/home/presentation/components/favorite_menu_list.dart';
 import 'package:tada_clone/home/presentation/components/history_list.dart';
 import 'package:tada_clone/home/presentation/home_state.dart';
 
@@ -91,6 +92,21 @@ class _HomeSecondSectionState extends State<HomeSecondSection> {
                 ),
                 addresses: widget.state.recentlyAddresses,
                 onClick: (address) {},
+              ),
+            ),
+          if (isVisibleRecentlyHistory)
+            Padding(
+              padding: const EdgeInsets.only(left: 32, top: 16),
+              child: FavoriteMenuList(
+                header: const Row(
+                  children: [
+                    Text('즐겨찾기'),
+                    Spacer(),
+                    Text('관리>'),
+                    SizedBox(width: 16),
+                  ],
+                ),
+                onClick: (index) {},
               ),
             ),
           if (isVisibleSearchResult)

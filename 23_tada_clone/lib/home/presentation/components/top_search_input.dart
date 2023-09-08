@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tada_clone/home/presentation/components/tada_textfield.dart';
+import 'dart:math' as math;
 
 import '../home_state.dart';
 
@@ -23,12 +24,15 @@ class TopSearchInput extends StatelessWidget {
           icon: Icons.square_outlined,
           hintText: '출발지 입력',
           text: state.depart,
-          suffixWidget: IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.close,
-              color: Color(0xff35497A),
-              size: 12,
+          suffixWidget: Transform.rotate(
+            angle: 45 * math.pi / 180,
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.add_circle_outlined,
+                color: Colors.grey,
+                size: 16,
+              ),
             ),
           ),
           onChange: onDepartChange,
