@@ -71,19 +71,24 @@ class HomeSecondSection extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
-              child: switch (state.searchStatus) {
-                SearchStatus.none => RecentlyHistoryAndFavoriteList(
-                    recentlyAddresses: state.recentlyAddresses,
-                  ),
-                SearchStatus.loading => const Loading(),
-                SearchStatus.success => AddressList(
-                    addresses: state.searchResultAddresses,
-                    onClick: (Address address) {},
-                  ),
-                SearchStatus.error => const Text('error'),
-              },
+            Expanded(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+                  child: switch (state.searchStatus) {
+                    SearchStatus.none => RecentlyHistoryAndFavoriteList(
+                        recentlyAddresses: state.recentlyAddresses,
+                      ),
+                    SearchStatus.loading => const Loading(),
+                    SearchStatus.success => AddressList(
+                        addresses: state.searchResultAddresses,
+                        onClick: (Address address) {},
+                      ),
+                    SearchStatus.error => const Text('error'),
+                  },
+                ),
+              ),
             )
           ],
         ),

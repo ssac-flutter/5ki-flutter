@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
+import 'package:get_it/get_it.dart';
 import 'package:tada_clone/core/router.dart';
+import 'package:tada_clone/home/domain/use_case/search_location_use_case.dart';
+import 'package:tada_clone/home/presentation/home_view_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,6 +17,10 @@ void main() async {
 
   await dotenv.load();
   final naverMapClientId = dotenv.env['NAVER_MAP_CLIENT_ID'];
+  final kakaoRestApiKey = dotenv.env['KAKAO_REST_API_KEY'];
+
+  GetIt.instance.registerFactory(
+      () => HomeViewModel(SearchLocationUseCase(kakaoRestApiKey!)));
 
   await NaverMapSdk.instance.initialize(clientId: naverMapClientId);
 

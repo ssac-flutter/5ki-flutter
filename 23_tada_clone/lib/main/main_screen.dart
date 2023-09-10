@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:tada_clone/home/presentation/home_screen.dart';
 
@@ -18,7 +19,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ChangeNotifierProvider(
-        create: (_) => HomeViewModel(),
+        create: (_) => GetIt.I<HomeViewModel>(),
         child: HomeScreen(
           onChangeBottomNavigationVisibility: (bool hasBottomNavigation) {
             if (hasBottomNavigationMenu == hasBottomNavigation) {
