@@ -10,12 +10,27 @@ class HomeState with _$HomeState {
   const factory HomeState({
     required String userName,
     required HomeSection section,
+    (double, double)? currentPosition,
+    String? currentPlaceName,
     String? depart,
     String? arrive,
     HomeEvent? lastEvent,
     @Default([]) List<Address> recentlyAddresses,
     @Default([]) List<Address> searchResultAddresses,
+    @Default(SearchStatus.none) SearchStatus searchStatus,
   }) = _HomeState;
 }
 
-enum HomeSection { first, second, third, forth }
+enum HomeSection {
+  first,
+  second,
+  third,
+  forth,
+}
+
+enum SearchStatus {
+  none,
+  loading,
+  success,
+  error,
+}

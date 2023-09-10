@@ -9,6 +9,12 @@ sealed class HomeEvent {
   factory HomeEvent.historyClick(Address address) = HistoryClick;
 
   factory HomeEvent.changeSection(HomeSection section) = ChangeSection;
+
+  factory HomeEvent.getLocation((double, double) location) = GetLocation;
+
+  factory HomeEvent.arriveChange(String query) = ArriveChange;
+
+  factory HomeEvent.departChange(Address address) = DepartChange;
 }
 
 class DepartClick implements HomeEvent {}
@@ -25,4 +31,22 @@ class ChangeSection implements HomeEvent {
   final HomeSection section;
 
   ChangeSection(this.section);
+}
+
+class GetLocation implements HomeEvent {
+  final (double, double) location;
+
+  GetLocation(this.location);
+}
+
+class DepartChange implements HomeEvent {
+  final Address address;
+
+  DepartChange(this.address);
+}
+
+class ArriveChange implements HomeEvent {
+  final String query;
+
+  ArriveChange(this.query);
 }

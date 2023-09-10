@@ -64,7 +64,7 @@ class _LocationInputState extends State<LocationInput> {
                 ),
                 const SizedBox(width: 16),
                 Text(
-                  widget.state.depart == null ? '출발지 입력' : widget.state.depart!,
+                  widget.state.currentPlaceName == null ? '출발지 입력' : widget.state.currentPlaceName!,
                   style: TextStyle(
                     fontSize: 16,
                     color: widget.state.depart == null

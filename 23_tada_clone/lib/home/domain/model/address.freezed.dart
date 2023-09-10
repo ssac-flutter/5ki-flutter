@@ -14,16 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Address _$AddressFromJson(Map<String, dynamic> json) {
-  return _Address.fromJson(json);
-}
-
 /// @nodoc
 mixin _$Address {
   String get title => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
+  (double, double)? get location => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AddressCopyWith<Address> get copyWith => throw _privateConstructorUsedError;
 }
@@ -33,7 +29,7 @@ abstract class $AddressCopyWith<$Res> {
   factory $AddressCopyWith(Address value, $Res Function(Address) then) =
       _$AddressCopyWithImpl<$Res, Address>;
   @useResult
-  $Res call({String title, String address});
+  $Res call({String title, String address, (double, double)? location});
 }
 
 /// @nodoc
@@ -51,6 +47,7 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
   $Res call({
     Object? title = null,
     Object? address = null,
+    Object? location = freezed,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -61,6 +58,10 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
+      location: freezed == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as (double, double)?,
     ) as $Val);
   }
 }
@@ -72,7 +73,7 @@ abstract class _$$_AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
       __$$_AddressCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String address});
+  $Res call({String title, String address, (double, double)? location});
 }
 
 /// @nodoc
@@ -87,6 +88,7 @@ class __$$_AddressCopyWithImpl<$Res>
   $Res call({
     Object? title = null,
     Object? address = null,
+    Object? location = freezed,
   }) {
     return _then(_$_Address(
       title: null == title
@@ -97,26 +99,29 @@ class __$$_AddressCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
+      location: freezed == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as (double, double)?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_Address with DiagnosticableTreeMixin implements _Address {
-  const _$_Address({required this.title, required this.address});
 
-  factory _$_Address.fromJson(Map<String, dynamic> json) =>
-      _$$_AddressFromJson(json);
+class _$_Address with DiagnosticableTreeMixin implements _Address {
+  const _$_Address({required this.title, required this.address, this.location});
 
   @override
   final String title;
   @override
   final String address;
+  @override
+  final (double, double)? location;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Address(title: $title, address: $address)';
+    return 'Address(title: $title, address: $address, location: $location)';
   }
 
   @override
@@ -125,7 +130,8 @@ class _$_Address with DiagnosticableTreeMixin implements _Address {
     properties
       ..add(DiagnosticsProperty('type', 'Address'))
       ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('address', address));
+      ..add(DiagnosticsProperty('address', address))
+      ..add(DiagnosticsProperty('location', location));
   }
 
   @override
@@ -134,38 +140,33 @@ class _$_Address with DiagnosticableTreeMixin implements _Address {
         (other.runtimeType == runtimeType &&
             other is _$_Address &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.address, address) || other.address == address));
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.location, location) ||
+                other.location == location));
   }
 
-  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, address);
+  int get hashCode => Object.hash(runtimeType, title, address, location);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_AddressCopyWith<_$_Address> get copyWith =>
       __$$_AddressCopyWithImpl<_$_Address>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_AddressToJson(
-      this,
-    );
-  }
 }
 
 abstract class _Address implements Address {
   const factory _Address(
       {required final String title,
-      required final String address}) = _$_Address;
-
-  factory _Address.fromJson(Map<String, dynamic> json) = _$_Address.fromJson;
+      required final String address,
+      final (double, double)? location}) = _$_Address;
 
   @override
   String get title;
   @override
   String get address;
+  @override
+  (double, double)? get location;
   @override
   @JsonKey(ignore: true)
   _$$_AddressCopyWith<_$_Address> get copyWith =>

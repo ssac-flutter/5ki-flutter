@@ -41,6 +41,7 @@ class HomeScreen extends StatelessWidget {
             onChangeBottomNavigationVisibility(true);
             viewModel.onEvent(HomeEvent.changeSection(HomeSection.first));
           },
+          onEvent: viewModel.onEvent,
         ),
       HomeSection.third => Container(),
       HomeSection.forth => Container(),

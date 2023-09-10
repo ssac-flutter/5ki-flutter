@@ -114,6 +114,8 @@ class _HomeFirstSectionState extends State<HomeFirstSection> {
       ),
     );
 
+    widget.onEvent(HomeEvent.getLocation(location));
+
     await Future.delayed(const Duration(milliseconds: 500));
 
     setState(() {
