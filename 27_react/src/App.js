@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import ImageSearchApp from "./ImageSearchApp";
 
 function Counter() {
   const [counter, setCounter] = useState(0);
@@ -25,7 +26,7 @@ function Counter() {
 }
 
 function App() {
-  return <Counter />;
+  return <ImageSearchApp />;
 }
 
 export default App;
